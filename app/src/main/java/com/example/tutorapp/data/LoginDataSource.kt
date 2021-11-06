@@ -1,6 +1,6 @@
-package com.example.incoming.data
+package com.example.tutorapp.data
 
-import com.example.incoming.data.model.LoggedInUser
+import com.example.tutorapp.data.model.LoggedInUser
 import java.io.IOException
 
 /**

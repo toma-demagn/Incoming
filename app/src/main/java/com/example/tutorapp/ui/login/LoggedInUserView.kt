@@ -1,4 +1,4 @@
-package com.example.incoming.ui.login
+package com.example.tutorapp.ui.login
 
 /**
  * User details post authentication that is exposed to the UI

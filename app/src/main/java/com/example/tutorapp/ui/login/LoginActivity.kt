@@ -1,4 +1,4 @@
-package com.example.incoming.ui.login
+package com.example.tutorapp.ui.login
 
 import android.app.Activity
 import androidx.lifecycle.Observer
@@ -12,9 +12,9 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
-import com.example.incoming.databinding.ActivityLoginBinding
+import com.example.tutorapp.databinding.ActivityLoginBinding
 
-import com.example.incoming.R
+import com.example.tutorapp.R
 
 class LoginActivity : AppCompatActivity() {
 

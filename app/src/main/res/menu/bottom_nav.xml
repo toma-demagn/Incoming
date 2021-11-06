@@ -3,23 +3,23 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:title="Accueil"
+        android:title="@string/home"
         android:icon="@drawable/ic_baseline_home_24" />
     <item
         android:id="@+id/searchFragment"
-        android:title="Rechercher"
+        android:title="@string/search"
         android:icon="@drawable/ic_baseline_search_24" />
     <item
         android:id="@+id/adCreationFragment"
-        android:title="Ajouter"
+        android:title="@string/add"
         android:icon="@drawable/ic_baseline_add_box_24" />
     <item
         android:id="@+id/messagingFragment"
-        android:title="Messages"
+        android:title="@string/messages"
         android:icon="@drawable/ic_baseline_chat_24" />
     <item
         android:id="@+id/accountFragment"
-        android:title="Profil"
+        android:title="@string/profile"
         android:icon="@drawable/ic_baseline_account_circle_24" />
 
 </menu>

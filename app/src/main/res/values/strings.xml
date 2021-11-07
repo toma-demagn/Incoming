@@ -14,4 +14,31 @@
     <string name="add">Ajouter</string>
     <string name="messages">Messages</string>
     <string name="profile">Profil</string>
+    <string name="search_hint">Rechercher une annonce…</string>
+    <string name="no_results">Aucun résultat.</string>
+
+    <string-array name="tags_list">
+        <item>Mathématiques</item>
+        <item>Français</item>
+        <item>Physique</item>
+        <item>Chimie</item>
+        <item>Collège</item>
+        <item>Lycée</item>
+        <item>Cuisine</item>
+        <item>Mathématiques</item>
+        <item>Français</item>
+        <item>Physique</item>
+        <item>Chimie</item>
+        <item>Collège</item>
+        <item>Lycée</item>
+        <item>Cuisine</item>
+        <item>Mathématiques</item>
+        <item>Français</item>
+        <item>Physique</item>
+        <item>Chimie</item>
+        <item>Collège</item>
+        <item>Lycée</item>
+        <item>Cuisine</item>
+        <item />
+    </string-array>
 </resources>

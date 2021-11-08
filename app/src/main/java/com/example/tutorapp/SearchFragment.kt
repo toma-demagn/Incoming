@@ -1,16 +1,34 @@
 package com.example.tutorapp
 
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import org.json.JSONObject
+import org.json.JSONArray
 
 class SearchFragment : Fragment() {
 
-    private val jsonStringTags = """{"tag":"Mathématiques", "category":"C   ours"}"""
+    private val jsonStringTags = """
+        [
+            {"tag":"Mathématiques", "category":"Cours"},
+            {"tag":"Cuisine", "category":"Cours"},
+            {"tag":"Français", "category":"Cours"},
+            {"tag":"Chimie", "category":"Cours"},
+            {"tag":"Physique", "category":"Cours"},
+            {"tag":"Lycée", "category":"Niveau"},
+            {"tag":"Terminale", "category":"Niveau"},
+            {"tag":"Première", "category":"Niveau"},
+            {"tag":"Seconde", "category":"Niveau"},
+            {"tag":"Collège", "category":"Niveau"},
+            {"tag":"3eme", "category":"Niveau"},
+            {"tag":"4eme", "category":"Niveau"},
+            {"tag":"5eme", "category":"Niveau"},
+            {"tag":"6eme", "category":"Niveau"}
+        ]
+        """
 
     private lateinit var viewOfLayout: View
     private lateinit var adapter: ArrayAdapter<*>
@@ -30,8 +48,13 @@ class SearchFragment : Fragment() {
         lv.emptyView = viewOfLayout.findViewById<TextView>(R.id.sf_emptyTextView)
 
         // Get JSON object and adding the tags values in a list
-        val jsonObject = JSONObject(jsonStringTags)
-        val tagsList: MutableList<String> = mutableListOf(jsonObject.getString("tag"))
+        val tagsList: MutableList<String> = mutableListOf()
+        val jsonArray = JSONArray(jsonStringTags)
+        for (i in 0 until jsonArray.length()) {
+            tagsList.add(jsonArray.getJSONObject(i).getString("tag"))
+        }
+        // Adding an empty item to fix the list view bottom position issue in the layout
+        tagsList.add("")
 
         // Init the adapter and pass it to the list view
         adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, tagsList)

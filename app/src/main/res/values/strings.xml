@@ -16,4 +16,5 @@
     <string name="profile">Profil</string>
     <string name="search_hint">Rechercher une annonce…</string>
     <string name="no_results">Aucun résultat.</string>
+    <string name="suggestion">Suggestion</string>
 </resources>

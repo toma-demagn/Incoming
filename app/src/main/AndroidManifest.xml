@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TutorApp">
         <activity
-            android:name="com.example.tutorapp.ui.login.LoginActivity"
+            android:name=".SignUp"
+            android:exported="true" />
+        <activity
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login" />
         <activity
-            android:name="com.example.tutorapp.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

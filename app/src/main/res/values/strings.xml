@@ -31,4 +31,6 @@
     <string name="lookingForTutoring">Recherche de tutorat</string>
     <string name="lookingToTutor">Proposition de tutorat</string>
     <string name="saveChanges">Sauvegarder</string>
+    <string name="signUpTitle">Inscription</string>
+    <string name="createAccount">Créer son compte</string>
 </resources>

@@ -10,6 +10,13 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="home">Accueil</string>
+    <string name="lastName">Nom</string>
+    <string name="firstName">Prénom</string>
+    <string name="bankInfo">Coordonnées bancaires</string>
+    <string name="typeOfAd">Catégorie d\'annonces</string>
+    <string name="postalCode">Code postal</string>
+    <string name="city">Ville</string>
+    <string name="street">Rue</string>
     <string name="search">Rechercher</string>
     <string name="add">Ajouter</string>
     <string name="messages">Messages</string>
@@ -17,4 +24,11 @@
     <string name="search_hint">Rechercher une annonce…</string>
     <string name="no_results">Aucun résultat.</string>
     <string name="suggestion">Suggestion</string>
+    <string name="addressTitle">Adresse</string>
+    <string name="creditCardNumber">Numéro de carte bancaire</string>
+    <string name="expirationCreditCard">Expiration</string>
+    <string name="pinCreditCard">CVC</string>
+    <string name="lookingForTutoring">Recherche de tutorat</string>
+    <string name="lookingToTutor">Proposition de tutorat</string>
+    <string name="saveChanges">Sauvegarder</string>
 </resources>

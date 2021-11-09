@@ -20,157 +20,148 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/addressTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="327dp"
                 android:layout_marginBottom="16dp"
-                android:text="TextView"
+                android:text="@string/addressTitle"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/textView31"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintBottom_toTopOf="@+id/firstNameTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/addressTitle" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/firstNameTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/textView32"
+                android:text="@string/firstName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                app:layout_constraintTop_toBottomOf="@+id/addressTitle" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName25"
+                android:id="@+id/firstName"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="26dp"
                 android:ems="10"
+                android:hint="@string/firstName"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:text="Name"
-                app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName26"
+                app:layout_constraintEnd_toStartOf="@+id/lastName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView31" />
+                app:layout_constraintTop_toBottomOf="@+id/firstNameTitle" />
 
             <TextView
-                android:id="@+id/textView32"
+                android:id="@+id/lastNameTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="134dp"
-                android:layout_marginTop="98dp"
-                android:layout_marginEnd="132dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView31"
+                android:layout_marginStart="144dp"
+                android:layout_marginTop="96dp"
+                android:text="@string/lastName"
+                app:layout_constraintStart_toEndOf="@+id/firstNameTitle"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName26"
+                android:id="@+id/lastName"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="31dp"
                 android:layout_marginEnd="31dp"
                 android:ems="10"
+                android:hint="@string/lastName"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName25"
-                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+                app:layout_constraintStart_toEndOf="@+id/firstName"
+                app:layout_constraintTop_toBottomOf="@+id/lastNameTitle" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/streetTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="327dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/street"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName25" />
+                app:layout_constraintTop_toBottomOf="@+id/firstName" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName27"
+                android:id="@+id/street"
                 android:layout_width="354dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginEnd="31dp"
                 android:ems="10"
+                android:hint="@string/street"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+                app:layout_constraintTop_toBottomOf="@+id/streetTitle" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/postalCodeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="32dp"
-                android:text="TextView"
+                android:text="@string/postalCode"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName27" />
+                app:layout_constraintTop_toBottomOf="@+id/street" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName28"
+                android:id="@+id/postalCode"
                 android:layout_width="115dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginEnd="29dp"
                 android:ems="10"
+                android:hint="@string/postalCode"
                 android:inputType="textPersonName|numberDecimal"
-                android:text="Name"
-                app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName29"
+                app:layout_constraintEnd_toStartOf="@+id/city"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                app:layout_constraintTop_toBottomOf="@+id/postalCodeTitle" />
 
             <TextView
-                android:id="@+id/textView35"
+                android:id="@+id/cityTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="87dp"
+                android:layout_marginStart="68dp"
                 android:layout_marginTop="32dp"
-                android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName27" />
+                android:text="@string/city"
+                app:layout_constraintStart_toEndOf="@+id/postalCodeTitle"
+                app:layout_constraintTop_toBottomOf="@+id/street" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName29"
+                android:id="@+id/city"
                 android:layout_width="209dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="31dp"
                 android:ems="10"
+                android:hint="@string/city"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName28"
-                app:layout_constraintTop_toBottomOf="@+id/textView35" />
+                app:layout_constraintStart_toEndOf="@+id/postalCode"
+                app:layout_constraintTop_toBottomOf="@+id/cityTitle" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/bankInfoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="285dp"
-                android:text="TextView"
+                android:layout_marginTop="36dp"
+                android:text="@string/bankInfo"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName28" />
+                app:layout_constraintTop_toBottomOf="@+id/postalCode" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName30"
+                android:id="@+id/creditCardNumber"
                 android:layout_width="354dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="26dp"
@@ -178,73 +169,88 @@
                 android:layout_marginEnd="31dp"
                 android:backgroundTint="#7E7E7E"
                 android:ems="10"
+                android:hint="@string/creditCardNumber"
                 android:inputType="textPersonName"
-                android:text="Name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+                app:layout_constraintTop_toBottomOf="@+id/bankInfoTitle" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName31"
+                android:id="@+id/expirationCreditCard"
                 android:layout_width="198dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="29dp"
                 android:ems="10"
+                android:hint="@string/expirationCreditCard"
                 android:inputType="datetime"
-                android:text="Name"
-                app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName32"
+                app:layout_constraintEnd_toStartOf="@+id/pinCreditcard"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName30" />
+                app:layout_constraintTop_toBottomOf="@+id/creditCardNumber" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName32"
+                android:id="@+id/pinCreditcard"
                 android:layout_width="131dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="27dp"
                 android:layout_marginTop="32dp"
                 android:ems="10"
+                android:hint="@string/pinCreditCard"
                 android:inputType="numberDecimal"
-                android:text="Name"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName31"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName30" />
+                app:layout_constraintStart_toEndOf="@+id/expirationCreditCard"
+                app:layout_constraintTop_toBottomOf="@+id/creditCardNumber" />
 
             <TextView
-                android:id="@+id/textView39"
+                android:id="@+id/typeOfAdTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="32dp"
-                android:text="TextView"
+                android:text="@string/typeOfAd"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName31" />
+                app:layout_constraintTop_toBottomOf="@+id/expirationCreditCard" />
 
             <Switch
-                android:id="@+id/switch2"
+                android:id="@+id/lookingForTutoringSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
-                android:text="Switch"
+                android:splitTrack="false"
+                android:text="@string/lookingForTutoring"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView39" />
+                app:layout_constraintTop_toBottomOf="@+id/typeOfAdTitle" />
 
             <Switch
-                android:id="@+id/switch4"
+                android:id="@+id/lookingToTutorSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
-                android:text="Switch"
+                android:text="@string/lookingToTutor"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch2" />
+                app:layout_constraintTop_toBottomOf="@+id/lookingForTutoringSwitch" />
+
+            <Button
+                android:id="@+id/saveChangesProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/saveChanges"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lookingToTutorSwitch" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+
 
 </LinearLayout>

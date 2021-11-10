@@ -14,10 +14,10 @@ class ShowAd : AppCompatActivity() {
         val desc = bundle?.getString("desc")
         val pic = bundle?.getInt("pic")
         Toast.makeText(this, name + " " + desc + " "+pic, Toast.LENGTH_LONG).show()
-        textView9.setText(name)
+        adName.setText(name)
         descriptionText.setText(desc)
         if (pic != null) {
-            imageView.setImageResource(pic)
+            subjectIcon.setImageResource(pic)
         };
     }
 }

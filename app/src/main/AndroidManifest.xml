@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TutorApp">
         <activity
-            android:name=".editProfile"
-            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:name=".ShowAd"
             android:exported="true" />
+        <activity
+            android:name=".editProfile"
+            android:exported="true"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".SignUp"
             android:exported="true" />

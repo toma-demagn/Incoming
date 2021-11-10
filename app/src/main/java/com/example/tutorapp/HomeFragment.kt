@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import android.R
 import android.app.Activity
+import android.content.Intent
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -48,10 +49,20 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val names = arrayOf("math","physiquee", "math","physiquee")
-        val decs = arrayOf("descmath","descphysic", "descmath","descphysic")
+        val decs = arrayOf("descmath","descphysic ceci est le description d'un cours de physique vraiment très longue car il faut tester de voir si on peut scroller qzemoifjzqef qzefliijqzeflkzqenf oiqze fmoqzief jqzomeijf zqmoeijf qzemoif nqzoeif jqzeomif  n,qzelmkfnzeqomif jzq zeqflkksdclkqs,dfmo qzef qse:lkfsqdofin ze fzeqofisdlkfemqzlijf dsmiozefqze:jfnzeq lfo nqlkjvnqloi fnqsdoiefjzeqoijf qse lkzd o zeif zeoif qezoifj zeqmlkf ,dslk, zeifj ezqmoif jzqemofi eqzmo ifndvnomqinf z  ze voilà", "descmath","descphysic")
         val pics = arrayOf(com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique, com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique)
         val custAdapter = CustomAdapter(context as Activity, names, decs, pics)
         hf_listView.adapter = custAdapter
+        hf_listView.setOnItemClickListener { parent, view, position, id ->
+            val name = names[position]
+            val desc = decs[position]
+            val pic = pics[position]
+            val intent = Intent(context as Activity, ShowAd::class.java)
+            intent.putExtra("name", name)
+            intent.putExtra("desc", desc)
+            intent.putExtra("pic", pic)
+            startActivity(intent)
+        }
     }
 
     companion object {

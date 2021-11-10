@@ -56,7 +56,7 @@
         android:layout_marginTop="24dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/white"
+        android:background="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,15 +66,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_layout"
-            android:clipToOutline="true">
+            android:paddingStart="20dp"
+            >
 
             <TextView
                 android:id="@+id/descriptionTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="260dp"
+                android:paddingStart="10dp"
                 android:text="@string/description"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -84,11 +83,8 @@
 
             <TextView
                 android:id="@+id/descriptionText"
-                android:layout_width="361dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="21dp"
                 android:justificationMode="inter_word"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -97,11 +93,9 @@
 
             <TextView
                 android:id="@+id/availableHoursTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="236dp"
+                android:paddingStart="10dp"
                 android:text="@string/availableHours"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -111,12 +105,8 @@
 
             <TextView
                 android:id="@+id/availableHoursText"
-                android:layout_width="361dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="21dp"
-                android:layout_marginBottom="15dp"
                 android:text='"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"'
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/localisationTitle"
@@ -126,12 +116,9 @@
 
             <TextView
                 android:id="@+id/localisationTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="251dp"
-                android:layout_marginBottom="9dp"
+                android:paddingStart="10dp"
                 android:text="@string/localisation"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -142,12 +129,8 @@
 
             <TextView
                 android:id="@+id/localisationText"
-                android:layout_width="361dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="21dp"
-                android:layout_marginBottom="17dp"
                 android:text="TextView"
                 app:layout_constraintBottom_toTopOf="@+id/autorTitle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,11 +139,9 @@
 
             <TextView
                 android:id="@+id/autorTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
+                android:paddingStart="10dp"
                 android:text="@string/autor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -170,12 +151,8 @@
 
             <TextView
                 android:id="@+id/autorText"
-                android:layout_width="361dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="21dp"
-                android:layout_marginBottom="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="TextView"
                 app:layout_constraintBottom_toTopOf="@+id/contactButton"
                 app:layout_constraintEnd_toEndOf="parent"

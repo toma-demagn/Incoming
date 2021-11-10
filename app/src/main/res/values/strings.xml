@@ -34,6 +34,7 @@
     <string name="signUpTitle">Inscription</string>
     <string name="createAccount">Créer son compte</string>
     <string name="description">Description</string>
+    <string name="presentation">Presentation</string>
     <string name="availableHours">Disponibilités</string>
     <string name="localisation">Localisation</string>
     <string name="autor">Auteur de l\'annonce</string>

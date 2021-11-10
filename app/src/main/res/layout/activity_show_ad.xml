@@ -51,8 +51,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <ScrollView
-        android:layout_width="410dp"
-        android:layout_height="583dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="164dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_height="match_parent" 
+    android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/spacecraftImg"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"  
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Name"
+                android:id="@+id/nameTxt"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Propellant....................."
+                android:lines="1"
+                android:id="@+id/propellantTxt"
+                android:padding="10dp"
+                android:layout_alignParentLeft="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>

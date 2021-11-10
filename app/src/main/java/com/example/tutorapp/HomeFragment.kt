@@ -6,6 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+
+import android.R
+import android.app.Activity
+import kotlinx.android.synthetic.main.fragment_home.*
+
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -33,8 +39,19 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(com.example.tutorapp.R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val names = arrayOf("math","physiquee", "math","physiquee")
+        val decs = arrayOf("descmath","descphysic", "descmath","descphysic")
+        val pics = arrayOf(com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique, com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique)
+        val custAdapter = CustomAdapter(context as Activity, names, decs, pics)
+        hf_listView.adapter = custAdapter
     }
 
     companion object {

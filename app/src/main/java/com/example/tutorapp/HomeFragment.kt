@@ -48,8 +48,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val names = arrayOf("math","physiquee", "math","physiquee")
-        val decs = arrayOf("descmath","descphysic ceci est le description d'un cours de physique vraiment très longue car il faut tester de voir si on peut scroller qzemoifjzqef qzefliijqzeflkzqenf oiqze fmoqzief jqzomeijf zqmoeijf qzemoif nqzoeif jqzeomif  n,qzelmkfnzeqomif jzq zeqflkksdclkqs,dfmo qzef qse:lkfsqdofin ze fzeqofisdlkfemqzlijf dsmiozefqze:jfnzeq lfo nqlkjvnqloi fnqsdoiefjzeqoijf qse lkzd o zeif zeoif qezoifj zeqmlkf ,dslk, zeifj ezqmoif jzqemofi eqzmo ifndvnomqinf z  ze voilà", "descmath","descphysic")
+        val names = arrayOf("Mathématiques","Physique", "Mathématiques","Physique-Chimie")
+        val decs = arrayOf("Mon fils est en classe de 6e et il a des difficultés en maths " +
+                "il aurait besoin d'aide tous les weekends.","Ma fille est en 2nde et elle " +
+                "a beaucoup de mal en classe de Physique, il lui faudrait donc de l'aide " +
+                "tous les weekends", "Demande cours de maths","Demande cours de phyique")
         val pics = arrayOf(com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique, com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique)
         val custAdapter = CustomAdapter(context as Activity, names, decs, pics)
         hf_listView.adapter = custAdapter

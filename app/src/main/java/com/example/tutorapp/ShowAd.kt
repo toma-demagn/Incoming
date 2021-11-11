@@ -13,11 +13,13 @@ class ShowAd : AppCompatActivity() {
         val name = bundle?.getString("name")
         val desc = bundle?.getString("desc")
         val pic = bundle?.getInt("pic")
-        Toast.makeText(this, name + " " + desc + " "+pic, Toast.LENGTH_LONG).show()
-        adName.setText(name)
+        textView9.setText(name)
         descriptionText.setText(desc)
         if (pic != null) {
-            subjectIcon.setImageResource(pic)
-        };
+            imageView.setImageResource(pic)
+        }
+        contactButton.setOnClickListener {
+            Toast.makeText(this, "Sandra a été contactée", Toast.LENGTH_SHORT).show()
+        }
     }
 }

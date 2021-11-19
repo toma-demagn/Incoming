@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">TutorApp</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="welcomeOnTutorApp">Bienvenue sur TutorApp</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">Se connecter</string>
+    <string name="action_sign_in_short">Connexion</string>
+    <string name="welcome">"Bienvenue !"</string>
+    <string name="invalid_username">Nom d\'utilisateur invalide</string>
+    <string name="invalid_password">Le mot de passe doit contenir au moins 5 caractères</string>
+    <string name="login_failed">"Connexion échouée"</string>
     <string name="home">Accueil</string>
     <string name="lastName">Nom</string>
     <string name="firstName">Prénom</string>
@@ -31,12 +32,15 @@
     <string name="lookingForTutoring">Recherche de tutorat</string>
     <string name="lookingToTutor">Proposition de tutorat</string>
     <string name="saveChanges">Sauvegarder</string>
-    <string name="signUpTitle">Inscription</string>
-    <string name="createAccount">Créer son compte</string>
+    <string name="signUpTitle">Inscrivez-vous dès maintenant :</string>
+    <string name="createAccount">Créer mon compte</string>
     <string name="description">Description</string>
     <string name="presentation">Presentation</string>
     <string name="availableHours">Disponibilités</string>
     <string name="localisation">Localisation</string>
     <string name="autor">Auteur de l\'annonce</string>
     <string name="contact">Contacter</string>
+    <string name="birthday">Date de naissance</string>
+    <string name="alreadyHaveAnAccount">J\'ai déjà un compte</string>
+    <string name="username">Pseudonyme/Nom d\'utilisateur</string>
 </resources>

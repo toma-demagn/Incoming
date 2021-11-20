@@ -3,13 +3,22 @@ package com.example.tutorapp
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tutorapp.ui.login.LoginActivity
 import java.util.*
+import kotlin.collections.ArrayList
 
 class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var editTextList: ArrayList<EditText>
+    private var dateOfBirthValue = ""
+    private var iCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +26,52 @@ class SignUpActivity : AppCompatActivity() {
         Locale.setDefault(Locale.FRANCE)
         // Hide the action bar on this activity
         supportActionBar?.hide()
+
+        // Init the edit text inputs
+        val firstNameEditText = findViewById<EditText>(R.id.signUp_firstNameEditText)
+        val lastNameEditText = findViewById<EditText>(R.id.signUp_lastNameEditText)
+        val emailEditText = findViewById<EditText>(R.id.signUp_emailEditText)
+        val usernameEditText = findViewById<EditText>(R.id.signUp_usernameEditText)
+        val passwordEditText = findViewById<EditText>(R.id.signUp_passwordEditText)
+        // Create a list of all edit text
+        editTextList = arrayListOf(firstNameEditText, lastNameEditText, emailEditText, usernameEditText, passwordEditText)
+
+        // Add a listener on each editText
+        for (e in editTextList) {
+            e.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    checkInputsValues()
+                }
+            })
+        }
+    }
+
+    /**
+     * Method to check all the inputs values in order to enable or disable the register button
+     */
+    fun checkInputsValues() {
+        var isDataValid = true
+        // Check the editText inputs
+        for (e in editTextList) {
+            if (e.text.isNullOrEmpty()) {
+                isDataValid = false
+            }
+        }
+        // Check the date of birth value (only if the isDataValid value is still true)
+        if (isDataValid && dateOfBirthValue.isEmpty()) {
+            isDataValid = false
+        }
+        // Enable or disable the register button
+        val registerButton = findViewById<Button>(R.id.signUp_registerButton)
+        registerButton.isEnabled = isDataValid
+        iCount++
+        Log.d("CHECK_INPUT", iCount.toString())
     }
 
     /**
@@ -35,9 +90,12 @@ class SignUpActivity : AppCompatActivity() {
             val monthNumber = month + 1
             val monthString = if (monthNumber<10) "0$monthNumber" else "$monthNumber"
             // Date to String
-            val dateString = "${getString(R.string.birthday)} : $dayString/$monthString/$year"
+            dateOfBirthValue = "$dayString/$monthString/$year"
+            val dateString = "${getString(R.string.dateOfBirth)} : $dateOfBirthValue"
             // Set the text value with the selected date
             datePickerButton.text = dateString
+            // After a date has been selected, check the inputs to enable or not the register button
+            checkInputsValues()
         }, cYear, cMonth, cDay)
         dpd.show()
     }

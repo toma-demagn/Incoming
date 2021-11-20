@@ -40,7 +40,7 @@
     <string name="localisation">Localisation</string>
     <string name="autor">Auteur de l\'annonce</string>
     <string name="contact">Contacter</string>
-    <string name="birthday">Date de naissance</string>
+    <string name="dateOfBirth">Date de naissance</string>
     <string name="alreadyHaveAnAccount">J\'ai déjà un compte</string>
     <string name="username">Pseudonyme/Nom d\'utilisateur</string>
 </resources>

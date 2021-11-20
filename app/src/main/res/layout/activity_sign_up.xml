@@ -99,6 +99,19 @@
         app:layout_constraintTop_toBottomOf="@id/signUp_usernameEditText"
         tools:ignore="TextContrastCheck" />
 
+    <EditText
+        android:id="@+id/signUp_confirmPasswordEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/confirm_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:minHeight="@dimen/min_clickable_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUp_passwordEditText"
+        tools:ignore="TextContrastCheck" />
+
     <Button
         android:id="@+id/signUp_datePickerButton"
         style="?android:spinnerStyle"
@@ -111,7 +124,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signUp_passwordEditText" />
+        app:layout_constraintTop_toBottomOf="@id/signUp_confirmPasswordEditText" />
 
     <Button
         android:id="@+id/signUp_registerButton"

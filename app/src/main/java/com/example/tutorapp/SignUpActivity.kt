@@ -185,15 +185,14 @@ class SignUpActivity : AppCompatActivity() {
 
     /**
      * onClick method of the registerButton
-     * Method to create a new user account and then go to the MainActivity
+     * Method to create a new login and user account, then go to the MainActivity
      */
     fun createAccount(view: View) {
         val loginFetchJob = Job()
 
         val errorHandler = CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
-            Toast.makeText(this, "Impossible de créer le compte.", Toast.LENGTH_SHORT)
-                .show()
+            emailEditText.error = "Cette adresse email est déjà utilisée."
         }
 
         val scope = CoroutineScope(loginFetchJob + Dispatchers.Main)
@@ -205,6 +204,26 @@ class SignUpActivity : AppCompatActivity() {
             val login = Login(emailValue, passwordValue)
             loginRetriever.createLogin(login)
             // Save the user in DB
+            createUser()
+        }
+    }
+
+    /**
+     * Create a user account
+     */
+    private fun createUser() {
+        val userFetchJob = Job()
+        val emailValue: String = emailEditText.text.toString()
+
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            usernameEditText.error = "Ce nom d'utilisateur est déjà utilisé."
+            deleteLogin(emailValue)
+        }
+
+        val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
+
+        scope.launch(errorHandler) {
             val firstNameValue: String = firstNameEditText.text.toString()
             val lastNameValue: String = lastNameEditText.text.toString()
             val usernameValue: String = usernameEditText.text.toString()
@@ -215,12 +234,27 @@ class SignUpActivity : AppCompatActivity() {
                 username = usernameValue,
                 birthDate = birthDateValue
             )
-            userRetriever.createUser(user)
-
-            // If the login is well saved in the DB, we can go to the main activity
+            val response = userRetriever.createUser(user)
+            // If the user is well saved in the DB, we can go to the main activity
             val mainActivityIntent = Intent(this@SignUpActivity, MainActivity::class.java)
             mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(mainActivityIntent)
+        }
+    }
+
+    /**
+     * Delete a login if the user cannot be created
+     */
+    private fun deleteLogin(emailValue: String) {
+        val loginFetchJob = Job()
+
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+        }
+
+        val scope = CoroutineScope(loginFetchJob + Dispatchers.Main)
+        scope.launch(errorHandler) {
+            loginRetriever.deleteLogin(emailValue)
         }
     }
 

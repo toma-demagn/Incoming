@@ -21,4 +21,8 @@ class LoginRetriever {
     suspend fun createLogin(login: Login): Login {
         return networkInterface.createLogin(login)
     }
+
+    suspend fun deleteLogin(id: String) {
+        return networkInterface.deleteLogin(id)
+    }
 }

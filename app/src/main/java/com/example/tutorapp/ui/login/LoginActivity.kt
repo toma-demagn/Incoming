@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val username = binding.loginUsernameEditText
+        val username = binding.loginEmailEditText
         val password = binding.loginPasswordEditText
         val login = binding.loginSignInButton
         val signUp = binding.loginSignUpButton

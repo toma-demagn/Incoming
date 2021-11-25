@@ -1,10 +1,10 @@
 package com.example.tutorapp.data.network
 
-import com.example.tutorapp.data.model.Tag
+import com.example.tutorapp.data.model.User
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class TagRetriever {
+class UserRetriever {
 
     private val networkInterface: NetworkInterface
 
@@ -18,7 +18,7 @@ class TagRetriever {
         networkInterface = retrofit.create(NetworkInterface::class.java)
     }
 
-    suspend fun getTags(): List<Tag> {
-        return networkInterface.getTags()
+    suspend fun createUser(user: User): User {
+        return  networkInterface.createUser(user)
     }
 }

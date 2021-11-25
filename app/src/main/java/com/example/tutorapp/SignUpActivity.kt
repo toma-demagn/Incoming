@@ -5,17 +5,38 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tutorapp.data.model.Login
+import com.example.tutorapp.data.model.User
+import com.example.tutorapp.data.network.LoginRetriever
+import com.example.tutorapp.data.network.UserRetriever
 import com.example.tutorapp.ui.login.LoginActivity
+import kotlinx.coroutines.*
 import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
 
+    // Data retrievers
+    private val loginRetriever: LoginRetriever = LoginRetriever()
+    private val userRetriever: UserRetriever = UserRetriever()
+
+    // UI Components
+    private lateinit var firstNameEditText: EditText
+    private lateinit var lastNameEditText: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var usernameEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var confirmPasswordEditText: EditText
+
     private lateinit var editTextList: ArrayList<EditText>
-    private var dateOfBirthValue = ""
+
+    // Activity data
+    private var birthDateValue = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +46,13 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         // Init the edit text inputs
-        val firstNameEditText = findViewById<EditText>(R.id.signUp_firstNameEditText)
-        val lastNameEditText = findViewById<EditText>(R.id.signUp_lastNameEditText)
-        val emailEditText = findViewById<EditText>(R.id.signUp_emailEditText)
-        val usernameEditText = findViewById<EditText>(R.id.signUp_usernameEditText)
-        val passwordEditText = findViewById<EditText>(R.id.signUp_passwordEditText)
-        val confirmPasswordEditText = findViewById<EditText>(R.id.signUp_confirmPasswordEditText)
+        firstNameEditText = findViewById(R.id.signUp_firstNameEditText)
+        lastNameEditText = findViewById(R.id.signUp_lastNameEditText)
+        emailEditText = findViewById(R.id.signUp_emailEditText)
+        usernameEditText = findViewById(R.id.signUp_usernameEditText)
+        passwordEditText = findViewById(R.id.signUp_passwordEditText)
+        confirmPasswordEditText = findViewById(R.id.signUp_confirmPasswordEditText)
+
         // Create a list of all edit text
         editTextList = arrayListOf(
             firstNameEditText, lastNameEditText, emailEditText,
@@ -66,7 +88,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
         // Check the date of birth value (only if the isDataValid value is still true)
-        if (allFieldsCompleted && dateOfBirthValue.isEmpty()) {
+        if (allFieldsCompleted && birthDateValue.isEmpty()) {
             allFieldsCompleted = false
         }
         // Return the boolean
@@ -78,8 +100,7 @@ class SignUpActivity : AppCompatActivity() {
      * Returns true if it is the case, false otherwise
      */
     private fun areThePasswordFieldsIdentical(): Boolean {
-        val passwordValue: String = editTextList[4].text.toString()
-        val confirmPasswordEditText = editTextList[5]
+        val passwordValue: String = passwordEditText.text.toString()
         val confirmPasswordValue: String = confirmPasswordEditText.text.toString()
         val areIdentical = passwordValue == confirmPasswordValue
         // If the two values are not identical, we display an error message to inform the user
@@ -94,7 +115,6 @@ class SignUpActivity : AppCompatActivity() {
      * Returns true if it is the case, false otherwise
      */
     private fun isTheEmailWellFormatted(): Boolean {
-        val emailEditText = editTextList[2]
         val emailValue = emailEditText.text.toString()
         val res = emailValue.contains('@') && emailValue.split('@')[1].contains('.')
         if (!res) {
@@ -109,13 +129,11 @@ class SignUpActivity : AppCompatActivity() {
      */
     private fun areTheFieldsLongEnough(): Boolean {
         // Username
-        val usernameEditText = editTextList[3]
         val isUsernameLongEnough = usernameEditText.text.toString().length > 2
         if (!isUsernameLongEnough) {
             usernameEditText.error = "Le nom d'utilisateur doit au minimum contenir 3 caractères."
         }
         // Password
-        val passwordEditText = editTextList[4]
         val isPasswordLongEnough = passwordEditText.text.toString().length > 7
         if (!isPasswordLongEnough) {
             passwordEditText.error = "Le mot de passe doit au minimum contenir 8 caractères."
@@ -146,14 +164,13 @@ class SignUpActivity : AppCompatActivity() {
         // Date Picker Dialog
         val dpd = DatePickerDialog(
             this,
-            android.R.style.Theme_Material_Dialog_Alert,
-            DatePickerDialog.OnDateSetListener { _, year, month, day ->
+            android.R.style.Theme_Material_Dialog_Alert, { _, year, month, day ->
                 val dayString = if (day < 10) "0$day" else "$day"
                 val monthNumber = month + 1
                 val monthString = if (monthNumber < 10) "0$monthNumber" else "$monthNumber"
                 // Date to String
-                dateOfBirthValue = "$dayString/$monthString/$year"
-                val dateString = "${getString(R.string.dateOfBirth)} : $dateOfBirthValue"
+                birthDateValue = "$year-$monthString-$dayString"
+                val dateString = "${getString(R.string.dateOfBirth)} : $dayString/$monthString/$year"
                 // Set the text value with the selected date
                 datePickerButton.text = dateString
                 // After a date has been selected, check the inputs to enable or not the register button
@@ -171,11 +188,40 @@ class SignUpActivity : AppCompatActivity() {
      * Method to create a new user account and then go to the MainActivity
      */
     fun createAccount(view: View) {
-        // TODO : handle the registration
-        // Go to the main activity
-        val mainActivityIntent = Intent(this, MainActivity::class.java)
-        mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(mainActivityIntent)
+        val loginFetchJob = Job()
+
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            Toast.makeText(this, "Impossible de créer le compte.", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        val scope = CoroutineScope(loginFetchJob + Dispatchers.Main)
+
+        scope.launch(errorHandler) {
+            // Save the login in DB
+            val emailValue: String = emailEditText.text.toString()
+            val passwordValue: String = passwordEditText.text.toString()
+            val login = Login(emailValue, passwordValue)
+            loginRetriever.createLogin(login)
+            // Save the user in DB
+            val firstNameValue: String = firstNameEditText.text.toString()
+            val lastNameValue: String = lastNameEditText.text.toString()
+            val usernameValue: String = usernameEditText.text.toString()
+            val user = User(
+                firstName = firstNameValue,
+                lastName = lastNameValue,
+                email = emailValue,
+                username = usernameValue,
+                birthDate = birthDateValue
+            )
+            userRetriever.createUser(user)
+
+            // If the login is well saved in the DB, we can go to the main activity
+            val mainActivityIntent = Intent(this@SignUpActivity, MainActivity::class.java)
+            mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(mainActivityIntent)
+        }
     }
 
     /**

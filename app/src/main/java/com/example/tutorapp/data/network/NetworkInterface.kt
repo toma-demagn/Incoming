@@ -14,12 +14,15 @@ interface NetworkInterface {
     @GET("/api/tags")
     suspend fun getTags(): List<Tag>
 
+    @GET("/api/logins/{id}")
+    suspend fun getLogin(@Path("id") id: String): Login
+
     @Headers("Content-Type: application/json")
     @POST("/api/logins")
     suspend fun createLogin(@Body login: Login): Login
 
     @DELETE("/api/logins/{id}")
-    suspend fun deleteLogin(@Path("id") id : String)
+    suspend fun deleteLogin(@Path("id") id: String)
 
     @Headers("Content-Type: application/json")
     @POST("/api/users")

@@ -6,7 +6,7 @@
     <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Connexion</string>
-    <string name="welcome">"Bienvenue !"</string>
+    <string name="welcome">"Bienvenue"</string>
     <string name="invalid_username">Nom d\'utilisateur invalide</string>
     <string name="invalid_password">Le mot de passe doit contenir au moins 5 caractères</string>
     <string name="login_failed">"Connexion échouée"</string>

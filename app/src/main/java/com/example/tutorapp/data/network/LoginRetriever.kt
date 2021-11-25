@@ -18,6 +18,10 @@ class LoginRetriever {
         networkInterface = retrofit.create(NetworkInterface::class.java)
     }
 
+    suspend fun getLogin(id: String): Login {
+        return networkInterface.getLogin(id)
+    }
+
     suspend fun createLogin(login: Login): Login {
         return networkInterface.createLogin(login)
     }

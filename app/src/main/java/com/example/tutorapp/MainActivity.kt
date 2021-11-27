@@ -1,27 +1,16 @@
 package com.example.tutorapp
 
-import android.R.attr
-import android.app.Activity
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.tutorapp.ui.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.R.attr.bitmap
-
-import android.graphics.drawable.BitmapDrawable
-
-import android.graphics.drawable.Drawable
-
-
 
 
 class MainActivity : AppCompatActivity() {

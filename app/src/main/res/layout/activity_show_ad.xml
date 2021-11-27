@@ -50,30 +50,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="24dp"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_layout"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#00000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/contactButton"
+        >
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_layout"
-            android:paddingStart="20dp"
-            >
+            android:background="#00000000"
+
+            android:paddingStart="20dp">
 
             <TextView
                 android:id="@+id/descriptionTitle"
                 android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
                 android:text="@string/description"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -86,6 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
+                android:layout_marginEnd="20dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +103,6 @@
                 android:id="@+id/availableHoursTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
                 android:text="@string/availableHours"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -106,7 +113,9 @@
             <TextView
                 android:id="@+id/availableHoursText"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:text="Weekend"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/localisationTitle"
@@ -118,7 +127,6 @@
                 android:id="@+id/localisationTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
                 android:text="@string/localisation"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -131,6 +139,7 @@
                 android:id="@+id/localisationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:text="Paris"
                 app:layout_constraintBottom_toTopOf="@+id/autorTitle"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +150,6 @@
                 android:id="@+id/autorTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="10dp"
                 android:text="@string/autor"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -154,24 +162,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sandra"
-                app:layout_constraintBottom_toTopOf="@+id/contactButton"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/autorTitle" />
 
-            <Button
-                android:id="@+id/contactButton"
-                android:layout_width="134dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="144dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="143dp"
-                android:text="@string/contact"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.545"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/autorText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+        <Button
+            android:id="@+id/contactButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginEnd="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/contact"/>
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

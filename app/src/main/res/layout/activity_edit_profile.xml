@@ -23,6 +23,19 @@
             >
 
             <TextView
+                android:id="@+id/editProfileTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/editProfileTitle"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/addressTitle"
+                app:layout_constraintStart_toStartOf="@+id/firstName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@string/editProfileTitle" />
+
+            <TextView
                 android:id="@+id/addressTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,6 +85,7 @@
                 android:id="@+id/lastName"
                 android:layout_width="160dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="72dp"
                 android:ems="10"
                 android:hint="@string/lastName"
                 android:inputType="textPersonName"
@@ -104,21 +118,20 @@
                 android:id="@+id/postalCodeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginStart="3dp"
                 android:text="@string/postalCode"
-                app:layout_constraintStart_toStartOf="@+id/postalCode"
+                android:layout_marginTop="36dp"
+                android:layout_marginStart="3dp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/street" />
 
             <EditText
                 android:id="@+id/postalCode"
-                android:layout_width="115dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/postalCode"
-                android:layout_marginStart="3dp"
                 android:inputType="textPersonName|numberDecimal"
-                app:layout_constraintEnd_toStartOf="@+id/city"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/postalCodeTitle" />
 
@@ -127,6 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="3dp"
                 android:text="@string/city"
                 app:layout_constraintStart_toStartOf="@+id/city"
                 app:layout_constraintTop_toBottomOf="@+id/street" />
@@ -135,12 +149,13 @@
                 android:id="@+id/city"
                 android:layout_width="209dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="68dp"
                 android:ems="10"
                 android:hint="@string/city"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/postalCode"
-                app:layout_constraintTop_toBottomOf="@+id/cityTitle" />
+                app:layout_constraintBottom_toBottomOf="@id/postalCode" />
 
             <TextView
                 android:id="@+id/bankInfoTitle"
@@ -168,21 +183,20 @@
 
             <EditText
                 android:id="@+id/expirationCreditCard"
-                android:layout_width="198dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="29dp"
                 android:ems="10"
                 android:hint="@string/expirationCreditCard"
                 android:inputType="datetime"
-                app:layout_constraintEnd_toStartOf="@+id/pinCreditcard"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/creditCardNumber" />
 
             <EditText
                 android:id="@+id/pinCreditcard"
-                android:layout_width="131dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginStart="52dp"
                 android:layout_marginTop="32dp"
                 android:ems="10"
                 android:hint="@string/pinCreditCard"
@@ -205,7 +219,6 @@
                 android:id="@+id/lookingForTutoringSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
                 android:splitTrack="false"
@@ -217,7 +230,6 @@
                 android:id="@+id/lookingToTutorSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
                 android:layout_marginTop="16dp"
                 android:minHeight="48dp"
                 android:text="@string/lookingToTutor"

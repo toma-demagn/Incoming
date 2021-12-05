@@ -45,4 +45,5 @@
     <string name="username">Pseudonyme/Nom d\'utilisateur</string>
     <string name="confirm_password">Confirmez votre mot de passe</string>
     <string name="editProfileTitle">Modifier son profil</string>
+    <string name="adName">Nom de l\'annonce</string>
 </resources>

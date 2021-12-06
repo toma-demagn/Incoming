@@ -13,6 +13,11 @@
         android:theme="@style/Theme.TutorApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AdCreation"
+            android:exported="false"
+            android:label="@string/title_activity_ad_creation"
+            android:theme="@style/Theme.TutorApp.NoActionBar" />
+        <activity
             android:name=".ShowAd"
             android:exported="true" />
         <activity
@@ -24,6 +29,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

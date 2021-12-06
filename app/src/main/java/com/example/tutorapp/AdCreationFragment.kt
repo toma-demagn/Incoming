@@ -1,6 +1,7 @@
 package com.example.tutorapp
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,23 +43,20 @@ class AdCreationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        postAdButton.setOnClickListener {
-            postAd()
+        continueButton.setOnClickListener {
+            next()
         }
     }
 
-    private fun postAd() {
-        if (subjectText.text.length * postalCode.text.length * street.text.length *
-            city.text.length * editDesc.text.length * editDispo.text.length > 0) {
-            subjectText.setText("")
-            postalCode.setText("")
-            street.setText("")
-            city.setText("")
-            editDesc.setText("")
-            editDispo.setText("")
-            Toast.makeText(context as Activity, "Annonce postée", Toast.LENGTH_LONG).show()
-        } else
-            Toast.makeText(context as Activity, "Veuillez remplir toutes les informations", Toast.LENGTH_LONG).show()
+    private fun next() {
+
+        if (subjectText.text.length * editDesc.text.length *  adNameText.text.length > 0) {
+            val intent = Intent(context, AdCreation::class.java)
+            intent.putExtra("subject", subjectText.text)
+            intent.putExtra("desc", editDesc.text)
+            intent.putExtra("name", adNameText.text)
+            startActivity(intent)
+        }
     }
 
     companion object {

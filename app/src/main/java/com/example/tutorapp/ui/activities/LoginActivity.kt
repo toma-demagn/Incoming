@@ -1,6 +1,7 @@
 package com.example.tutorapp.ui.activities
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -28,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
     private var emailValue: String = ""
     private var passwordValue: String = ""
 
+    // SharedPreferences (saved data in the app)
+    private lateinit var sp: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        sp = getSharedPreferences("login", MODE_PRIVATE)
+        if (sp.getBoolean("isLoggedIn", false)) {
+
+        }
 
         // Init the edit text inputs
         val emailEditText: EditText = binding.loginEmailEditText
@@ -83,10 +92,9 @@ class LoginActivity : AppCompatActivity() {
             val login = loginRetriever.getLogin(emailValue)
             // If the inputs values are right, we go to the main activity
             if (isLoginOk(login)) {
-                val mainActivityIntent = Intent(this@LoginActivity, MainActivity::class.java)
-                mainActivityIntent.flags =
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(mainActivityIntent)
+                sp.edit().putBoolean("isLoggedIn", true).apply()
+                // TODO : put the user id in the sp
+                goToMainActivity()
             } else {
                 Toast.makeText(
                     this@LoginActivity,
@@ -103,6 +111,15 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun isLoginOk(login: Login): Boolean {
         return login.email == emailValue && login.password == passwordValue
+    }
+
+    /**
+     * Go to the main activity
+     */
+    private fun goToMainActivity() {
+        val mainActivityIntent = Intent(this@LoginActivity, MainActivity::class.java)
+        mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(mainActivityIntent)
     }
 
     /**

@@ -2,6 +2,7 @@ package com.example.tutorapp
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -36,12 +37,21 @@ class SignUpActivity : AppCompatActivity() {
     // Activity data
     private var birthDateValue = ""
 
+    // SharedPreferences (saved data in the app)
+    private lateinit var sp: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         Locale.setDefault(Locale.FRANCE)
         // Hide the action bar on this activity
         supportActionBar?.hide()
+
+        // If the user is already logged in, we go to the main activity
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+        if (sp.getBoolean("isLoggedIn", false)) {
+            goToMainActivity()
+        }
 
         // Init the edit text inputs
         firstNameEditText = findViewById(R.id.signUp_firstNameEditText)
@@ -233,10 +243,12 @@ class SignUpActivity : AppCompatActivity() {
                 birthDate = birthDateValue
             )
             val response = userRetriever.createUser(user)
+            // We save the useful data in the SharedPreferences
+            sp.edit().putBoolean("isLoggedIn", true).apply()
+            // TODO : sp.edit().putInt("userId", response.id).apply()
+
             // If the user is well saved in the DB, we can go to the main activity
-            val mainActivityIntent = Intent(this@SignUpActivity, MainActivity::class.java)
-            mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(mainActivityIntent)
+            goToMainActivity()
         }
     }
 
@@ -263,5 +275,14 @@ class SignUpActivity : AppCompatActivity() {
     fun goToLoginActivity(view: View) {
         val loginIntent = Intent(this, LoginActivity::class.java)
         startActivity(loginIntent)
+    }
+
+    /**
+     * Method to go to the main activity
+     */
+    private fun goToMainActivity() {
+        val mainActivityIntent = Intent(this, MainActivity::class.java)
+        mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(mainActivityIntent)
     }
 }

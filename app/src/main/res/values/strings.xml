@@ -46,4 +46,14 @@
     <string name="confirm_password">Confirmez votre mot de passe</string>
     <string name="editProfileTitle">Modifier son profil</string>
     <string name="adName">Nom de l\'annonce</string>
+    <string name="introductionTitle">Introduction</string>
+    <string name="introductionText">Texte d\'introduction de l\'utilisateur</string>
+    <string name="email">E-mail</string>
+    <string name="emailTitle">E-mail</string>
+    <string name="createAdTitle">Créer une annonce</string>
+    <string name="adNameTitle">Nom de l\'annonce</string>
+    <string name="adNameText">Nom de l\'annonce</string>
+    <string name="postAdButton">Poster l\'annonce</string>
+    <string name="subjectText">Matière</string>
+    <string name="subjectTitle">Matière</string>
 </resources>

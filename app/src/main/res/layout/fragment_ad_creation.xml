@@ -16,90 +16,108 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/createAdTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/Title"
                 android:layout_marginStart="3dp"
-                android:textSize="25dp"
-                android:text="Annonce"
-                />
+                android:text="@string/createAdTitle"
+                android:textSize="34dp"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/adNameTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/descTitle"
+                android:layout_below="@id/createAdTitle"
                 android:layout_marginStart="3dp"
-                android:layout_below="@id/Title"
-                android:text="Description"
-                />
+                android:layout_marginTop="16dp"
+                android:text="@string/adNameTitle" />
+
             <EditText
+                android:id="@+id/adNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/adNameTitle"
+                android:hint="@string/adNameText"
+                android:minHeight="48dp" />
+
+
+            <TextView
+                android:id="@+id/descTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/adNameText"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/description" />
+
+            <EditText
+                android:id="@+id/editDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/descTitle"
                 android:hint="@string/description"
-                android:id="@+id/editDesc"/>
+                android:minHeight="48dp" />
+
             <TextView
+                android:id="@+id/dispoTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/editDesc"
-                android:id="@+id/dispoTitle"
                 android:layout_marginStart="3dp"
-                android:text="Disponibilité"
-                />
+                android:layout_marginTop="32dp"
+                android:text="@string/availableHours" />
+
             <EditText
+                android:id="@+id/editDispo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Disponibilités"
                 android:layout_below="@+id/dispoTitle"
-                android:id="@+id/editDispo"/>
-
-
+                android:hint="@string/availableHours"
+                android:minHeight="48dp" />
 
             <TextView
+                android:id="@+id/subjectTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/fieldTitle"
                 android:layout_below="@+id/editDispo"
                 android:layout_marginStart="3dp"
-                android:text="Matière"
-                />
+                android:layout_marginTop="32dp"
+                android:text="@string/subjectTitle" />
+
             <EditText
+                android:id="@+id/subjectText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/fieldTitle"
-                android:hint="@string/description"
-                android:id="@+id/editField"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editField"
-                android:id="@+id/addrTitle"
-                android:text="Adresse"
-                android:textSize="25dp"/>
+                android:layout_below="@+id/subjectTitle"
+                android:hint="@string/subjectText"
+                android:minHeight="48dp" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constrLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editField"
-                android:id="@+id/constrLayout">
+                android:layout_below="@id/subjectText">
 
                 <TextView
-                    android:id="@+id/streetTitle2"
+                    android:id="@+id/streetTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/street"
-                    app:layout_constraintStart_toStartOf="@+id/street2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@+id/street"
+                    app:layout_constraintTop_toBottomOf="@+id/localisationTitle" />
 
                 <EditText
-                    android:id="@+id/street2"
+                    android:id="@+id/street"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:ems="10"
@@ -107,27 +125,27 @@
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/streetTitle2" />
+                    app:layout_constraintTop_toBottomOf="@+id/streetTitle" />
 
                 <TextView
                     android:id="@+id/postalCodeTitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
                     android:layout_marginStart="3dp"
+                    android:layout_marginTop="36dp"
                     android:text="@string/postalCode"
-                    app:layout_constraintStart_toStartOf="@+id/postalCode2"
-                    app:layout_constraintTop_toBottomOf="@+id/street2" />
+                    app:layout_constraintStart_toStartOf="@+id/postalCode"
+                    app:layout_constraintTop_toBottomOf="@+id/street" />
 
                 <EditText
-                    android:id="@+id/postalCode2"
+                    android:id="@+id/postalCode"
                     android:layout_width="115dp"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="48dp"
                     android:ems="10"
                     android:hint="@string/postalCode"
-                    android:layout_marginStart="3dp"
                     android:inputType="textPersonName|numberDecimal"
-                    app:layout_constraintEnd_toStartOf="@+id/city2"
+                    app:layout_constraintEnd_toStartOf="@+id/city"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/postalCodeTitle2" />
 
@@ -135,35 +153,45 @@
                     android:id="@+id/cityTitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="36dp"
                     android:text="@string/city"
-                    app:layout_constraintStart_toStartOf="@+id/city2"
-                    app:layout_constraintTop_toBottomOf="@+id/street2" />
+                    app:layout_constraintStart_toStartOf="@+id/city"
+                    app:layout_constraintTop_toBottomOf="@+id/street" />
 
                 <EditText
-                    android:id="@+id/city2"
+                    android:id="@+id/city"
                     android:layout_width="209dp"
                     android:layout_height="50dp"
                     android:ems="10"
                     android:hint="@string/city"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/postalCode2"
+                    app:layout_constraintStart_toEndOf="@+id/postalCode"
                     app:layout_constraintTop_toBottomOf="@+id/cityTitle2" />
+
+                <TextView
+                    android:id="@+id/localisationTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/localisation"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/post"
-                android:layout_centerHorizontal="true"
-                android:text="Poster l'annonce"
+                android:id="@+id/postAdButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:layout_below="@id/constrLayout"
-                />
+                android:layout_marginTop="36dp"
+                android:text="@string/postAdButton" />
 
         </RelativeLayout>
 

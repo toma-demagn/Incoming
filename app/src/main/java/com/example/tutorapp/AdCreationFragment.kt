@@ -1,19 +1,13 @@
 package com.example.tutorapp
 
 import android.app.Activity
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import kotlinx.android.synthetic.main.fragment_ad_creation.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,18 +42,18 @@ class AdCreationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        post.setOnClickListener {
+        postAdButton.setOnClickListener {
             postAd()
         }
     }
 
     private fun postAd() {
-        if (editField.text.length * postalCode2.text.length * street2.text.length *
-            city2.text.length * editDesc.text.length * editDispo.text.length > 0) {
-            editField.setText("")
-            postalCode2.setText("")
-            street2.setText("")
-            city2.setText("")
+        if (subjectText.text.length * postalCode.text.length * street.text.length *
+            city.text.length * editDesc.text.length * editDispo.text.length > 0) {
+            subjectText.setText("")
+            postalCode.setText("")
+            street.setText("")
+            city.setText("")
             editDesc.setText("")
             editDispo.setText("")
             Toast.makeText(context as Activity, "Annonce postée", Toast.LENGTH_LONG).show()

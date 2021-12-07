@@ -1,15 +1,14 @@
-package com.example.tutorapp
+package com.example.tutorapp.ui.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-
-import android.R
-import android.app.Activity
-import android.content.Intent
+import androidx.fragment.app.Fragment
+import com.example.tutorapp.adapters.CustomAdapter
+import com.example.tutorapp.ui.activities.ShowAdActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -48,19 +47,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val names = arrayOf("Mathématiques","Physique", "Mathématiques","Physique-Chimie")
-        val decs = arrayOf("Mon fils est en classe de 6e et il a des difficultés en maths " +
-                "il aurait besoin d'aide tous les weekends.","Ma fille est en 2nde et elle " +
-                "a beaucoup de mal en classe de Physique, il lui faudrait donc de l'aide " +
-                "tous les weekends", "Demande cours de maths","Demande cours de phyique")
-        val pics = arrayOf(com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique, com.example.tutorapp.R.drawable.maths, com.example.tutorapp.R.drawable.physique)
+        val names = arrayOf("Mathématiques", "Physique", "Mathématiques", "Physique-Chimie")
+        val decs = arrayOf(
+            "Mon fils est en classe de 6e et il a des difficultés en maths " +
+                    "il aurait besoin d'aide tous les weekends.", "Ma fille est en 2nde et elle " +
+                    "a beaucoup de mal en classe de Physique, il lui faudrait donc de l'aide " +
+                    "tous les weekends", "Demande cours de maths", "Demande cours de phyique"
+        )
+        val pics = arrayOf(
+            com.example.tutorapp.R.drawable.maths,
+            com.example.tutorapp.R.drawable.physique,
+            com.example.tutorapp.R.drawable.maths,
+            com.example.tutorapp.R.drawable.physique
+        )
         val custAdapter = CustomAdapter(context as Activity, names, decs, pics)
         hf_listView.adapter = custAdapter
         hf_listView.setOnItemClickListener { parent, view, position, id ->
             val name = names[position]
             val desc = decs[position]
             val pic = pics[position]
-            val intent = Intent(context as Activity, ShowAd::class.java)
+            val intent = Intent(context as Activity, ShowAdActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("desc", desc)
             intent.putExtra("pic", pic)

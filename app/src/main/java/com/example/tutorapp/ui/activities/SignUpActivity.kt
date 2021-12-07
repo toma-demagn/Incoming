@@ -1,4 +1,4 @@
-package com.example.tutorapp
+package com.example.tutorapp.ui.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -10,11 +10,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Login
 import com.example.tutorapp.data.model.User
 import com.example.tutorapp.data.network.LoginRetriever
 import com.example.tutorapp.data.network.UserRetriever
-import com.example.tutorapp.ui.activities.LoginActivity
 import kotlinx.coroutines.*
 import java.util.*
 

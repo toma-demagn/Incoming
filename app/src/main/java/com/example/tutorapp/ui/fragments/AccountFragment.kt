@@ -1,4 +1,4 @@
-package com.example.tutorapp
+package com.example.tutorapp.ui.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -7,8 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.tutorapp.R
+import com.example.tutorapp.ui.activities.EditProfileActivity
 import kotlinx.android.synthetic.main.fragment_account.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,12 +42,14 @@ class AccountFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         editButton.setOnClickListener{ goToEdit() }
     }
+
     fun goToEdit() {
-        val intent = Intent(context as Activity, editProfile::class.java)
+        val intent = Intent(context as Activity, EditProfileActivity::class.java)
         startActivity(intent)
     }
 

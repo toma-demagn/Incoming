@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.tutorapp.HomeFragment"
+        android:name="com.example.tutorapp.ui.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.tutorapp.SearchFragment"
+        android:name="com.example.tutorapp.ui.fragments.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/adCreationFragment"
-        android:name="com.example.tutorapp.AdCreationFragment"
+        android:name="com.example.tutorapp.ui.fragments.AdCreationFragment"
         android:label="fragment_ad_creation"
         tools:layout="@layout/fragment_ad_creation" />
     <fragment
         android:id="@+id/messagingFragment"
-        android:name="com.example.tutorapp.MessagingFragment"
+        android:name="com.example.tutorapp.ui.fragments.MessagingFragment"
         android:label="fragment_messaging"
         tools:layout="@layout/fragment_messaging" />
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.example.tutorapp.AccountFragment"
+        android:name="com.example.tutorapp.ui.fragments.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
 </navigation>

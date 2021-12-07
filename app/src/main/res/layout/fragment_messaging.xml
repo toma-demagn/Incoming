@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+    android:layout_marginVertical="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".MessagingFragment">
+    tools:context=".ui.fragments.MessagingFragment">
 
     <TextView
         android:id="@+id/mf_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="3dp"
         android:text="@string/my_messages"
-        android:textColor="@color/main_blue"
-        android:textSize="30sp"
+        android:textSize="34sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/editProfileLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".AdCreationFragment"
-    tools:ignore="SpeakableTextPresentCheck"
     android:orientation="vertical"
     android:padding="10dp"
-    >
+    tools:context=".ui.fragments.AdCreationFragment"
+    tools:ignore="SpeakableTextPresentCheck">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -28,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="3dp"
                 android:text="@string/createAdTitle"
-                android:textSize="34dp"
+                android:textSize="34sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -85,12 +83,7 @@
                 android:minHeight="48dp" />
 
 
-
-
-
-
         </RelativeLayout>
-
 
 
     </ScrollView>
@@ -99,9 +92,8 @@
         android:id="@+id/continueButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/continueButton"
         android:layout_alignParentBottom="true"
-        />
+        android:layout_marginTop="36dp"
+        android:text="@string/continueButton" />
 
 </RelativeLayout>

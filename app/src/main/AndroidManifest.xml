@@ -13,18 +13,18 @@
         android:theme="@style/Theme.TutorApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AdCreation"
+            android:name=".ui.activities.AdCreationActivity"
             android:exported="false"
             android:label="@string/title_activity_ad_creation" />
         <activity
-            android:name=".ShowAd"
+            android:name=".ui.activities.ShowAdActivity"
             android:exported="true" />
         <activity
-            android:name=".editProfile"
+            android:name=".ui.activities.EditProfileActivity"
             android:exported="true"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".ui.activities.SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             android:name=".ui.activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true" />
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.tutorapp
+package com.example.tutorapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Tag
 import kotlinx.android.synthetic.main.suggestion_item.view.*
 import java.util.*

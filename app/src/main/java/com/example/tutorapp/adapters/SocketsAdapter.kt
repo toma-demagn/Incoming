@@ -6,7 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Socket
+import com.example.tutorapp.data.network.UserRetriever
+import com.example.tutorapp.data.utils.TimestampUtils
 import kotlinx.android.synthetic.main.socket_item.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class SocketsAdapter(
     private val sockets: List<Socket>,
@@ -14,12 +20,20 @@ class SocketsAdapter(
     private val listener: (Socket) -> Unit
 ) : RecyclerView.Adapter<SocketsAdapter.ViewHolder>() {
 
+    private val userRetriever: UserRetriever = UserRetriever()
+
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(socket: Socket) {
-            itemView.socketItem_contactTextView.text = getContactUserId(socket).toString()
-            itemView.socketItem_lastMessageTextView.text = socket.lastMessage
-            // TODO : time to day/hour
-            itemView.socketItem_timeTextView.text = socket.lastUpdate.split('T')[0]
+            val userFetchJob = Job()
+            val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
+            scope.launch {
+                val contactId = getContactUserId(socket)
+                val user = userRetriever.getUserById(contactId)
+                itemView.socketItem_contactTextView.text = user.username
+                itemView.socketItem_lastMessageTextView.text = socket.lastMessage
+                // TODO : timestamp to day/hour
+                itemView.socketItem_timeTextView.text = TimestampUtils.timestampToDate(socket.lastUpdate)
+            }
         }
     }
 

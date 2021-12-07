@@ -41,6 +41,9 @@ interface NetworkInterface {
 
     /* USERS */
 
+    @GET("/api/users/{id}")
+    suspend fun getUserById(@Path("id") id: Int): User
+
     @GET("/api/users")
     suspend fun getUserByEmail(@Query("email") email: String): User
 

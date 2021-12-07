@@ -2,7 +2,6 @@ package com.example.tutorapp.ui.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,9 +56,6 @@ class MessagingFragment : Fragment() {
         scope.launch(errorHandler) {
             val userId = sp.getInt("userId", -1)
             val sockets = socketRetriever.getSocketsByUserId(userId)
-            Log.d("CUSTOM", "USERID : $userId")
-            Log.d("CUSTOM", "SOCKETS : ")
-            Log.d("CUSTOM", sockets.toString())
             renderData(sockets, userId)
         }
     }
@@ -69,6 +65,8 @@ class MessagingFragment : Fragment() {
             Toast.makeText(context, socket.lastUpdate, Toast.LENGTH_SHORT).show()
         }
         mf_socketsRecyclerView.adapter = socketsAdapter
+        mf_progressBar.visibility = View.GONE
+        mf_socketsRecyclerView.visibility = View.VISIBLE
     }
 
 

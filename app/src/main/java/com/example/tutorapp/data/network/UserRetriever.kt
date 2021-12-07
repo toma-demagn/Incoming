@@ -18,6 +18,10 @@ class UserRetriever {
         networkInterface = retrofit.create(NetworkInterface::class.java)
     }
 
+    suspend fun getUserById(id: Int): User {
+        return networkInterface.getUserById(id)
+    }
+
     suspend fun getUserByEmail(email: String): User {
         return networkInterface.getUserByEmail(email)
     }

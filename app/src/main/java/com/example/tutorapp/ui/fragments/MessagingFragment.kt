@@ -1,60 +1,75 @@
 package com.example.tutorapp.ui.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tutorapp.R
+import com.example.tutorapp.adapters.SocketsAdapter
+import com.example.tutorapp.data.model.Socket
+import com.example.tutorapp.data.network.SocketRetriever
+import kotlinx.android.synthetic.main.fragment_messaging.*
+import kotlinx.coroutines.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MessagingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MessagingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var sp: SharedPreferences
+    private val socketRetriever: SocketRetriever = SocketRetriever()
+    private lateinit var socketsAdapter: SocketsAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Getting the sp values
+        sp = this.requireActivity().getSharedPreferences("login", AppCompatActivity.MODE_PRIVATE)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_messaging, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MessagingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MessagingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        getUserSockets()
     }
+
+    private fun initRecyclerView() {
+        mf_socketsRecyclerView.layoutManager = LinearLayoutManager(context)
+    }
+
+    private fun getUserSockets() {
+        val socketsFetchJob = Job()
+
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            Toast.makeText(context, "Impossible de récupérer les messages...", Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        val scope = CoroutineScope(socketsFetchJob + Dispatchers.Main)
+        scope.launch(errorHandler) {
+            val userId = sp.getInt("userId", -1)
+            val sockets = socketRetriever.getSocketsByUserId(userId)
+            Log.d("CUSTOM", "USERID : $userId")
+            Log.d("CUSTOM", "SOCKETS : ")
+            Log.d("CUSTOM", sockets.toString())
+            renderData(sockets, userId)
+        }
+    }
+
+    private fun renderData(sockets: List<Socket>, userId: Int) {
+        socketsAdapter = SocketsAdapter(sockets = sockets, userId = userId) { socket ->
+            Toast.makeText(context, socket.lastUpdate, Toast.LENGTH_SHORT).show()
+        }
+        mf_socketsRecyclerView.adapter = socketsAdapter
+    }
+
+
 }

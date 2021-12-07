@@ -1,7 +1,9 @@
 package com.example.tutorapp.data.network
 
-import com.example.tutorapp.data.model.*
+import com.example.tutorapp.data.model.Login
+import com.example.tutorapp.data.model.Socket
 import com.example.tutorapp.data.model.Tag
+import com.example.tutorapp.data.model.User
 import retrofit2.http.*
 
 interface NetworkInterface {
@@ -26,7 +28,7 @@ interface NetworkInterface {
     /* SOCKETS */
 
     @GET("/api/sockets")
-    suspend fun getSocketsByUserId(@Query("userId") userId: Int): Sockets
+    suspend fun getSocketsByUserId(@Query("userId") userId: Int): List<Socket>
 
     @Headers("Content-Type: application/json")
     @POST("/api/sockets")

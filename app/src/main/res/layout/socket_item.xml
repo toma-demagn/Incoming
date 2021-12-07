@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:paddingVertical="10dp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/socketItem_leftGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/socketItem_rightGuideline"
@@ -24,7 +24,6 @@
         android:id="@+id/socketItem_imageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="10dp"
         android:contentDescription="@string/profile"
         android:src="@drawable/ic_baseline_chat_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:paddingHorizontal="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/socketItem_rightGuideline"
         app:layout_constraintStart_toEndOf="@id/socketItem_leftGuideline"
@@ -67,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hour_example"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/socketItem_rightGuideline"

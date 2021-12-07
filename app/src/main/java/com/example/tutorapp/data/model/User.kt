@@ -4,6 +4,7 @@ package com.example.tutorapp.data.model
  * Data class for User object
  */
 data class User (
+    val id: Int ?= null,
     val firstName: String,
     val lastName: String,
     val email: String,

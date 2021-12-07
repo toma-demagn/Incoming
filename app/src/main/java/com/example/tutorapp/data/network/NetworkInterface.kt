@@ -8,7 +8,7 @@ import retrofit2.http.*
 interface NetworkInterface {
 
     companion object {
-        var BaseURl = "https://apitutorapp.herokuapp.com"
+        var BaseURl = "http://192.168.0.165:3000"
     }
 
     @GET("/api/tags")
@@ -23,6 +23,9 @@ interface NetworkInterface {
 
     @DELETE("/api/logins/{id}")
     suspend fun deleteLogin(@Path("id") id: String)
+
+    @GET("/api/users")
+    suspend fun getUserByEmail(@Query("email") email: String): User
 
     @Headers("Content-Type: application/json")
     @POST("/api/users")

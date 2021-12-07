@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MessagingFragment">
 
     <TextView
+        android:id="@+id/mf_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="50sp"
-        android:textAlignment="center"
-        android:text="MESSAGING FRAGMENT COMING SOON..." />
+        android:layout_margin="10dp"
+        android:text="@string/my_messages"
+        android:textColor="@color/main_blue"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

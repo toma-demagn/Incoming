@@ -44,11 +44,9 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
         Locale.setDefault(Locale.FRANCE)
-        // Hide the action bar on this activity
-        supportActionBar?.hide()
 
         // If the user is already logged in, we go to the main activity
-        sp = getSharedPreferences("login", MODE_PRIVATE);
+        sp = getSharedPreferences("login", MODE_PRIVATE)
         if (sp.getBoolean("isLoggedIn", false)) {
             goToMainActivity()
         }
@@ -242,10 +240,10 @@ class SignUpActivity : AppCompatActivity() {
                 username = usernameValue,
                 birthDate = birthDateValue
             )
-            val response = userRetriever.createUser(user)
             // We save the useful data in the SharedPreferences
+            val createdUser = userRetriever.createUser(user)
             sp.edit().putBoolean("isLoggedIn", true).apply()
-            // TODO : sp.edit().putInt("userId", response.id).apply()
+            sp.edit().putInt("userId", createdUser.id!!).apply()
 
             // If the user is well saved in the DB, we can go to the main activity
             goToMainActivity()

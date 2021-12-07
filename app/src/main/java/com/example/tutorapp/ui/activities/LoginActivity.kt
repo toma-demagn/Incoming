@@ -14,13 +14,15 @@ import com.example.tutorapp.MainActivity
 import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Login
 import com.example.tutorapp.data.network.LoginRetriever
+import com.example.tutorapp.data.network.UserRetriever
 import com.example.tutorapp.databinding.ActivityLoginBinding
 import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity() {
 
-    // Login data retriever
+    // Data retrievers
     private val loginRetriever: LoginRetriever = LoginRetriever()
+    private val userRetriever: UserRetriever = UserRetriever()
 
     // UI binding
     private lateinit var binding: ActivityLoginBinding
@@ -38,12 +40,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
-
         sp = getSharedPreferences("login", MODE_PRIVATE)
-        if (sp.getBoolean("isLoggedIn", false)) {
-
-        }
 
         // Init the edit text inputs
         val emailEditText: EditText = binding.loginEmailEditText
@@ -92,8 +89,9 @@ class LoginActivity : AppCompatActivity() {
             val login = loginRetriever.getLogin(emailValue)
             // If the inputs values are right, we go to the main activity
             if (isLoginOk(login)) {
+                val user = userRetriever.getUserByEmail(login.email)
                 sp.edit().putBoolean("isLoggedIn", true).apply()
-                // TODO : put the user id in the sp
+                sp.edit().putInt("userId", user.id!!).apply()
                 goToMainActivity()
             } else {
                 Toast.makeText(
@@ -117,7 +115,7 @@ class LoginActivity : AppCompatActivity() {
      * Go to the main activity
      */
     private fun goToMainActivity() {
-        val mainActivityIntent = Intent(this@LoginActivity, MainActivity::class.java)
+        val mainActivityIntent = Intent(this, MainActivity::class.java)
         mainActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(mainActivityIntent)
     }

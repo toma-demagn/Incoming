@@ -1,18 +1,17 @@
 package com.example.tutorapp.data.network
 
-import com.example.tutorapp.data.model.Login
+import com.example.tutorapp.data.model.*
 import com.example.tutorapp.data.model.Tag
-import com.example.tutorapp.data.model.User
 import retrofit2.http.*
 
 interface NetworkInterface {
 
     companion object {
-        var BaseURl = "http://192.168.0.165:3000"
+        var BaseURL = "http://192.168.0.165:3000"
+        // var BaseURL = "https://apitutorapp.herokuapp.com"
     }
 
-    @GET("/api/tags")
-    suspend fun getTags(): List<Tag>
+    /* LOGINS */
 
     @GET("/api/logins/{id}")
     suspend fun getLogin(@Path("id") id: String): Login
@@ -23,6 +22,22 @@ interface NetworkInterface {
 
     @DELETE("/api/logins/{id}")
     suspend fun deleteLogin(@Path("id") id: String)
+
+    /* SOCKETS */
+
+    @GET("/api/sockets")
+    suspend fun getSocketsByUserId(@Query("userId") userId: Int): Sockets
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/sockets")
+    suspend fun createSocket(@Body socket: Socket): Socket
+
+    /* TAGS */
+
+    @GET("/api/tags")
+    suspend fun getTags(): List<Tag>
+
+    /* USERS */
 
     @GET("/api/users")
     suspend fun getUserByEmail(@Query("email") email: String): User

@@ -1,10 +1,11 @@
 package com.example.tutorapp.data.network
 
-import com.example.tutorapp.data.model.User
+import com.example.tutorapp.data.model.Socket
+import com.example.tutorapp.data.model.Sockets
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class UserRetriever {
+class SocketRetriever {
 
     private val networkInterface: NetworkInterface
 
@@ -18,11 +19,12 @@ class UserRetriever {
         networkInterface = retrofit.create(NetworkInterface::class.java)
     }
 
-    suspend fun getUserByEmail(email: String): User {
-        return networkInterface.getUserByEmail(email)
+    suspend fun getSocketsByUserId(userId: Int): Sockets {
+        return networkInterface.getSocketsByUserId(userId)
     }
 
-    suspend fun createUser(user: User): User {
-        return  networkInterface.createUser(user)
+    suspend fun createSocket(socket: Socket): Socket {
+        return networkInterface.createSocket(socket)
     }
+
 }

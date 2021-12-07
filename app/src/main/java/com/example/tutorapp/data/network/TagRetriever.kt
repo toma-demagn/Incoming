@@ -11,7 +11,7 @@ class TagRetriever {
     init {
         val retrofit = Retrofit
             .Builder()
-            .baseUrl(NetworkInterface.BaseURl)
+            .baseUrl(NetworkInterface.BaseURL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

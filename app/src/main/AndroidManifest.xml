@@ -15,8 +15,7 @@
         <activity
             android:name=".AdCreation"
             android:exported="false"
-            android:label="@string/title_activity_ad_creation"
-            android:theme="@style/Theme.TutorApp.NoActionBar" />
+            android:label="@string/title_activity_ad_creation" />
         <activity
             android:name=".ShowAd"
             android:exported="true" />

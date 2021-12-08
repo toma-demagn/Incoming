@@ -51,9 +51,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatFragment_messagesRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/chatFragment_appBar" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/chatFragment_borderView"
+            app:layout_constraintTop_toBottomOf="@id/chatFragment_appBar"
+            app:layout_constraintVertical_bias="0.0" />
 
         <View
             android:id="@+id/chatFragment_borderView"

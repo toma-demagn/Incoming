@@ -4,17 +4,18 @@ import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.tutorapp.R
 import com.example.tutorapp.data.model.User
 import com.example.tutorapp.data.network.UserRetriever
 import com.example.tutorapp.data.utils.TimestampUtils
 import com.example.tutorapp.ui.activities.EditProfileActivity
+import com.example.tutorapp.ui.activities.SignUpActivity
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.coroutines.*
 
@@ -38,8 +39,12 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Getting the user data and update the UI
         getUserData()
+        // Setting listeners for the buttons
         accountFragment_editButton.setOnClickListener{ goToEdit() }
+        accountFragment_logoutButton.setOnClickListener { logOut() }
+
     }
 
     private fun getUserData() {
@@ -67,5 +72,13 @@ class AccountFragment : Fragment() {
     private fun goToEdit() {
         val intent = Intent(context as Activity, EditProfileActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun logOut() {
+        sp.edit().putBoolean("isLoggedIn", false).apply()
+        sp.edit().putInt("userId", -1).apply()
+        val signUpActivityIntent = Intent(context, SignUpActivity::class.java)
+        signUpActivityIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(signUpActivityIntent)
     }
 }

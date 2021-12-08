@@ -15,8 +15,7 @@ private const val VIEW_TYPE_MESSAGE_FROM_CONTACT = 2
 
 class MessagesAdapter(
     private val messages: List<Message>,
-    private val userIsSocketAuthor: Boolean,
-    private val contactUsername: String
+    private val userIsSocketAuthor: Boolean
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int =

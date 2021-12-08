@@ -1,10 +1,11 @@
 package com.example.tutorapp.ui.fragments
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import com.example.tutorapp.data.network.SocketRetriever
 import com.example.tutorapp.data.network.UserRetriever
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.*
+import java.util.*
 
 private const val SOCKET_ID = "socketId"
 private const val USER_ID = "userId"
@@ -33,7 +35,6 @@ class ChatFragment : Fragment() {
     private val userRetriever: UserRetriever = UserRetriever()
 
     // Data
-    private var contactUsername: String = ""
     private lateinit var socket: Socket
     private lateinit var adapter: MessagesAdapter
 
@@ -85,6 +86,40 @@ class ChatFragment : Fragment() {
         }
         // Init recyclerView
         chatFragment_messagesRecyclerView.layoutManager = LinearLayoutManager(context)
+        // Add listener on the edit text
+        chatFragment_messageEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                chatFragment_sendButton.isEnabled = !chatFragment_messageEditText.text.isNullOrEmpty()
+            }
+        })
+        // Create a message when send button is clicked on
+        chatFragment_sendButton.setOnClickListener {
+            sendMessage()
+        }
+    }
+
+    private fun sendMessage() {
+        val messageFetchJob = Job()
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            Toast.makeText(context, "Impossible d'envoyer le message...", Toast.LENGTH_SHORT)
+                .show()
+        }
+        val scope = CoroutineScope(messageFetchJob + Dispatchers.Main)
+        scope.launch(errorHandler) {
+            val isFromSender: Boolean = userId == socket.fromId
+            val message = Message(
+                socketId = socketId!!,
+                isFromSender = isFromSender,
+                content = chatFragment_messageEditText.text.toString(),
+                time = Calendar.getInstance().time.toString()
+            )
+            messageRetriever.createMessage(message)
+            chatFragment_messageEditText.text.clear()
+            getMessages()
+        }
     }
 
     private fun initData() {
@@ -107,7 +142,6 @@ class ChatFragment : Fragment() {
         val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
         scope.launch {
             val username = userRetriever.getUserById(contactUserId).username
-            contactUsername = username
             chatFragment_contactUsername.text = username
         }
     }
@@ -130,11 +164,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun renderData(messages: List<Message>, userIsSocketAuthor: Boolean) {
-        adapter = MessagesAdapter(
-            messages = messages,
-            userIsSocketAuthor = userIsSocketAuthor,
-            contactUsername = contactUsername
-        )
+        adapter = MessagesAdapter(messages = messages, userIsSocketAuthor = userIsSocketAuthor)
         chatFragment_messagesRecyclerView.adapter = adapter
     }
 }

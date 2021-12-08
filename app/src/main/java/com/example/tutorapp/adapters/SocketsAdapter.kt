@@ -33,7 +33,7 @@ class SocketsAdapter(
                 val user = userRetriever.getUserById(contactId)
                 itemView.socketItem_contactTextView.text = user.username
                 itemView.socketItem_lastMessageTextView.text = socket.lastMessage
-                // TODO : timestamp to day/hour
+                // Time display management
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     val currentDate = LocalDate.now()
                     val socketLastUpdateDay = TimestampUtils.getDayOfMonth(socket.lastUpdate)

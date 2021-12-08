@@ -18,6 +18,10 @@ class SocketRetriever {
         networkInterface = retrofit.create(NetworkInterface::class.java)
     }
 
+    suspend fun getSocketById(id: Int): Socket {
+        return networkInterface.getSocketById(id)
+    }
+
     suspend fun getSocketsByUserId(userId: Int): List<Socket> {
         return networkInterface.getSocketsByUserId(userId)
     }

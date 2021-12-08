@@ -27,6 +27,9 @@ interface NetworkInterface {
 
     /* SOCKETS */
 
+    @GET("/api/sockets/{id}")
+    suspend fun getSocketById(@Path("id") id: Int): Socket
+
     @GET("/api/sockets")
     suspend fun getSocketsByUserId(@Query("userId") userId: Int): List<Socket>
 

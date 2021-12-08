@@ -22,9 +22,9 @@
         tools:layout="@layout/fragment_ad_creation" />
     <fragment
         android:id="@+id/messagingFragment"
-        android:name="com.example.tutorapp.ui.fragments.MessagingFragment"
+        android:name="com.example.tutorapp.ui.fragments.SocketsFragment"
         android:label="fragment_messaging"
-        tools:layout="@layout/fragment_messaging" />
+        tools:layout="@layout/fragment_sockets" />
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.tutorapp.ui.fragments.AccountFragment"

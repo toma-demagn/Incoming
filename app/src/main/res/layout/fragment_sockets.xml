@@ -6,10 +6,10 @@
     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
     android:layout_marginVertical="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context=".ui.fragments.MessagingFragment">
+    tools:context=".ui.fragments.SocketsFragment">
 
     <TextView
-        android:id="@+id/mf_title"
+        android:id="@+id/msocketsFragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
@@ -18,13 +18,13 @@
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mf_socketsRecyclerView"
+        android:id="@+id/socketsFragment_socketsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/mf_emptySocketsTextView"
+        android:id="@+id/socketsFragment_emptySocketsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -34,7 +34,7 @@
         android:visibility="gone" />
 
     <ProgressBar
-        android:id="@+id/mf_progressBar"
+        android:id="@+id/socketsFragment_progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

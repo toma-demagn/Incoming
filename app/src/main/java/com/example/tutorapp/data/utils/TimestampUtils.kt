@@ -24,6 +24,6 @@ class TimestampUtils {
             splitTimestampToDayAndHour(timestamp)[0].split('-')[0].toInt()
 
         fun timestampToHour(timestamp: String): String =
-            splitTimestampToDayAndHour(timestamp)[1].split('.')[0].drop(3)
+            splitTimestampToDayAndHour(timestamp)[1].split('.')[0].dropLast(3)
     }
 }

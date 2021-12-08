@@ -18,7 +18,7 @@ import com.example.tutorapp.data.network.SocketRetriever
 import com.example.tutorapp.data.network.UserRetriever
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.*
-import java.util.*
+import java.time.LocalDateTime
 
 private const val SOCKET_ID = "socketId"
 private const val USER_ID = "userId"
@@ -85,7 +85,9 @@ class ChatFragment : Fragment() {
             transaction.commit()
         }
         // Init recyclerView
-        chatFragment_messagesRecyclerView.layoutManager = LinearLayoutManager(context)
+        val rvLayoutManager = LinearLayoutManager(context)
+        rvLayoutManager.stackFromEnd = true
+        chatFragment_messagesRecyclerView.layoutManager = rvLayoutManager
         // Add listener on the edit text
         chatFragment_messageEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -114,11 +116,11 @@ class ChatFragment : Fragment() {
                 socketId = socketId!!,
                 isFromSender = isFromSender,
                 content = chatFragment_messageEditText.text.toString(),
-                time = Calendar.getInstance().time.toString()
+                time = LocalDateTime.now().toString()
             )
             messageRetriever.createMessage(message)
-            chatFragment_messageEditText.text.clear()
             getMessages()
+            chatFragment_messageEditText.text.clear()
         }
     }
 
@@ -155,7 +157,7 @@ class ChatFragment : Fragment() {
         }
         val scope = CoroutineScope(messagesFetchJob + Dispatchers.Main)
         scope.launch(errorHandler) {
-            val messages = messageRetriever.getMessagesBySocketId(socketId!!)
+            val messages = messageRetriever.getMessagesBySocketId(socketId!!).sortedBy{ it.time }
             if (messages.isNotEmpty()) {
                 val userIsSocketAuthor: Boolean = userId == socket.fromId
                 renderData(messages, userIsSocketAuthor)

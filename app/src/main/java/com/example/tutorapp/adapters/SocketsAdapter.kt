@@ -34,23 +34,19 @@ class SocketsAdapter(
                 itemView.socketItem_contactTextView.text = user.username
                 itemView.socketItem_lastMessageTextView.text = socket.lastMessage
                 // Time display management
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    val currentDate = LocalDate.now()
-                    val socketLastUpdateDay = TimestampUtils.getDayOfMonth(socket.lastUpdate)
-                    val socketLastUpdateYear = TimestampUtils.getYear(socket.lastUpdate)
-                    itemView.socketItem_timeTextView.text = when {
-                        currentDate.dayOfMonth == socketLastUpdateDay -> {
-                            TimestampUtils.timestampToHour(socket.lastUpdate)
-                        }
-                        currentDate.year == socketLastUpdateYear -> {
-                            TimestampUtils.timestampToDate(socket.lastUpdate)
-                        }
-                        else -> {
-                            TimestampUtils.timestampToDate(socket.lastUpdate, true)
-                        }
+                val currentDate = LocalDate.now()
+                val socketLastUpdateDay = TimestampUtils.getDayOfMonth(socket.lastUpdate)
+                val socketLastUpdateYear = TimestampUtils.getYear(socket.lastUpdate)
+                itemView.socketItem_timeTextView.text = when {
+                    currentDate.dayOfMonth == socketLastUpdateDay -> {
+                        TimestampUtils.timestampToHour(socket.lastUpdate)
                     }
-                } else {
-                    itemView.socketItem_timeTextView.text = TimestampUtils.timestampToDate(socket.lastUpdate)
+                    currentDate.year == socketLastUpdateYear -> {
+                        TimestampUtils.timestampToDate(socket.lastUpdate)
+                    }
+                    else -> {
+                        TimestampUtils.timestampToDate(socket.lastUpdate, true)
+                    }
                 }
             }
         }

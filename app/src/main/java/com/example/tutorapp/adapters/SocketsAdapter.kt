@@ -57,7 +57,7 @@ class SocketsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SocketsAdapter.ViewHolder {
-        return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.socket_item, parent, false))
+        return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.item_socket, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

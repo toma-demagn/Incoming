@@ -33,7 +33,7 @@ class SuggestionsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.suggestion_item, parent, false))
+        return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.item_suggestion, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

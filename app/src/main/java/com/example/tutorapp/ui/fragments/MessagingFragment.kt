@@ -55,8 +55,13 @@ class MessagingFragment : Fragment() {
         val scope = CoroutineScope(socketsFetchJob + Dispatchers.Main)
         scope.launch(errorHandler) {
             val userId = sp.getInt("userId", -1)
-            val sockets = socketRetriever.getSocketsByUserId(userId)
-            renderData(sockets, userId)
+            val sockets = socketRetriever.getSocketsByUserId(userId).sortedByDescending { it.lastUpdate }
+            mf_progressBar.visibility = View.GONE
+            if (sockets.isNotEmpty()) {
+                renderData(sockets, userId)
+            } else {
+                mf_emptySocketsTextView.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -65,7 +70,6 @@ class MessagingFragment : Fragment() {
             Toast.makeText(context, socket.lastUpdate, Toast.LENGTH_SHORT).show()
         }
         mf_socketsRecyclerView.adapter = socketsAdapter
-        mf_progressBar.visibility = View.GONE
         mf_socketsRecyclerView.visibility = View.VISIBLE
     }
 

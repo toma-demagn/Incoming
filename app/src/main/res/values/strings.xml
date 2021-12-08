@@ -60,6 +60,7 @@
     <string name="title_activity_ad_creation">AdCreation</string>
     <string name="my_messages">Mes messages</string>
     <string name="hour_example">08:24</string>
+    <string name="no_message">Aucun message.</string>
 
     <string-array name="DaysOfWeek">
         <item>Lundi</item>

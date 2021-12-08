@@ -1,5 +1,6 @@
 package com.example.tutorapp.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 class SocketsAdapter(
     private val sockets: List<Socket>,
@@ -32,7 +34,24 @@ class SocketsAdapter(
                 itemView.socketItem_contactTextView.text = user.username
                 itemView.socketItem_lastMessageTextView.text = socket.lastMessage
                 // TODO : timestamp to day/hour
-                itemView.socketItem_timeTextView.text = TimestampUtils.timestampToDate(socket.lastUpdate)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val currentDate = LocalDate.now()
+                    val socketLastUpdateDay = TimestampUtils.getDayOfMonth(socket.lastUpdate)
+                    val socketLastUpdateYear = TimestampUtils.getYear(socket.lastUpdate)
+                    itemView.socketItem_timeTextView.text = when {
+                        currentDate.dayOfMonth == socketLastUpdateDay -> {
+                            TimestampUtils.timestampToHour(socket.lastUpdate)
+                        }
+                        currentDate.year == socketLastUpdateYear -> {
+                            TimestampUtils.timestampToDate(socket.lastUpdate)
+                        }
+                        else -> {
+                            TimestampUtils.timestampToDate(socket.lastUpdate, true)
+                        }
+                    }
+                } else {
+                    itemView.socketItem_timeTextView.text = TimestampUtils.timestampToDate(socket.lastUpdate)
+                }
             }
         }
     }

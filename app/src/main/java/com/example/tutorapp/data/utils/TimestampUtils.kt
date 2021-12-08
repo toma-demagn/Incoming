@@ -17,6 +17,12 @@ class TimestampUtils {
             }
         }
 
+        fun getDayOfMonth(timestamp: String): Int =
+            splitTimestampToDayAndHour(timestamp)[0].split('-')[2].toInt()
+
+        fun getYear(timestamp: String): Int =
+            splitTimestampToDayAndHour(timestamp)[0].split('-')[0].toInt()
+
         fun timestampToHour(timestamp: String): String =
             splitTimestampToDayAndHour(timestamp)[1].split('.')[0].drop(3)
     }

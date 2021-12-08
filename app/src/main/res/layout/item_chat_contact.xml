@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="20dp">
 
     <TextView
         android:id="@+id/itemChatContact_dateTextView"
@@ -18,37 +17,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/itemChatContact_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:contentDescription="@string/profile"
-        android:src="@drawable/ic_baseline_account_circle_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemChatContact_dateTextView" />
-
-    <TextView
-        android:id="@+id/itemChatContact_usernameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/username"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/itemChatContact_imageView"
-        app:layout_constraintTop_toBottomOf="@id/itemChatContact_dateTextView" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/itemChatContact_messageCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         app:cardBackgroundColor="#eef1f6"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toEndOf="@id/itemChatContact_imageView"
-        app:layout_constraintTop_toBottomOf="@id/itemChatContact_usernameTextView">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemChatContact_dateTextView">
 
         <LinearLayout
             android:id="@+id/itemChatContact_messageCardLayout"

@@ -8,7 +8,7 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Tag
-import kotlinx.android.synthetic.main.suggestion_item.view.*
+import kotlinx.android.synthetic.main.item_suggestion.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 

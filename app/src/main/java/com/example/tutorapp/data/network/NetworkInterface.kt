@@ -1,9 +1,7 @@
 package com.example.tutorapp.data.network
 
-import com.example.tutorapp.data.model.Login
-import com.example.tutorapp.data.model.Socket
+import com.example.tutorapp.data.model.*
 import com.example.tutorapp.data.model.Tag
-import com.example.tutorapp.data.model.User
 import retrofit2.http.*
 
 interface NetworkInterface {
@@ -24,6 +22,15 @@ interface NetworkInterface {
 
     @DELETE("/api/logins/{id}")
     suspend fun deleteLogin(@Path("id") id: String)
+
+    /* MESSAGES */
+
+    @GET("/api/messages")
+    suspend fun getMessagesBySocketId(@Query("socketId") socketId: Int): List<Message>
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/messages")
+    suspend fun createMessage(@Body message: Message): Message
 
     /* SOCKETS */
 

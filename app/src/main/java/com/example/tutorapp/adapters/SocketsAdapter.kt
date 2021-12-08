@@ -9,7 +9,7 @@ import com.example.tutorapp.R
 import com.example.tutorapp.data.model.Socket
 import com.example.tutorapp.data.network.UserRetriever
 import com.example.tutorapp.data.utils.TimestampUtils
-import kotlinx.android.synthetic.main.socket_item.view.*
+import kotlinx.android.synthetic.main.item_socket.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

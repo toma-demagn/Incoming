@@ -74,6 +74,7 @@
     <string name="post_ad">Poster l\'annonce</string>
     <string name="level">Niveau</string>
     <string name="availabilities">Disponibilités</string>
+    <string name="last_ads">Dernières annonces :</string>
 
     <string-array name="DaysOfWeek">
         <item>Lundi</item>

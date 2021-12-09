@@ -38,7 +38,7 @@
     <string name="presentation">Presentation</string>
     <string name="availableHours">Disponibilité</string>
     <string name="localisation">Localisation</string>
-    <string name="autor">Auteur de l\'annonce</string>
+    <string name="author">Auteur de l\'annonce</string>
     <string name="contact">Contacter</string>
     <string name="dateOfBirth">Date de naissance</string>
     <string name="alreadyHaveAnAccount">J\'ai déjà un compte</string>
@@ -75,6 +75,7 @@
     <string name="level">Niveau</string>
     <string name="availabilities">Disponibilités</string>
     <string name="last_ads">Dernières annonces :</string>
+    <string name="ad_creation_time">Date de création de l\'annonce</string>
 
     <string-array name="DaysOfWeek">
         <item>Lundi</item>

@@ -1,10 +1,12 @@
 package com.example.tutorapp.ui.fragments
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tutorapp.R
@@ -16,6 +18,7 @@ import kotlinx.coroutines.*
 
 class HomeFragment : Fragment() {
 
+    private lateinit var sp: SharedPreferences
     private val adRetriever: AdRetriever = AdRetriever()
     private lateinit var adsAdapater: AdsAdapter
 
@@ -23,6 +26,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Getting the sp values
+        sp = this.requireActivity().getSharedPreferences("login", AppCompatActivity.MODE_PRIVATE)
         // Inflate the layout for this fragment
         return inflater.inflate(com.example.tutorapp.R.layout.fragment_home, container, false)
     }
@@ -52,10 +57,12 @@ class HomeFragment : Fragment() {
 
     private fun renderData(ads: List<Ad>) {
         adsAdapater = AdsAdapter(ads = ads, context = requireContext()) {
-            //val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            //transaction.replace(R.id.nav_fragment_container,
-            //    AdFragment.newInstance(adId = it.id))
-            //transaction.commit()
+            val userId = sp.getInt("userId", -1)
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(
+                R.id.nav_fragment_container,
+                AdFragment.newInstance(adId = it.id!!, userId = userId))
+            transaction.commit()
         }
         homeFragment_recyclerView.adapter = adsAdapater
         homeFragment_recyclerView.visibility = View.VISIBLE

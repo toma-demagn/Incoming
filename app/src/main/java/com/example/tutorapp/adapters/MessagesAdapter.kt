@@ -19,10 +19,10 @@ class MessagesAdapter(
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int): Int =
-        if (messages[position].isFromSender && userIsSocketAuthor) {
-            VIEW_TYPE_MESSAGE_FROM_USER
+        if (messages[position].isFromSender) {
+            if (userIsSocketAuthor) VIEW_TYPE_MESSAGE_FROM_USER else VIEW_TYPE_MESSAGE_FROM_CONTACT
         } else {
-            VIEW_TYPE_MESSAGE_FROM_CONTACT
+            if (userIsSocketAuthor) VIEW_TYPE_MESSAGE_FROM_CONTACT else VIEW_TYPE_MESSAGE_FROM_USER
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =

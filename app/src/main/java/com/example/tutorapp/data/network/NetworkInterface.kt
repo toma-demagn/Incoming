@@ -11,6 +11,18 @@ interface NetworkInterface {
         // var BaseURL = "https://apitutorapp.herokuapp.com"
     }
 
+    /* ADS */
+
+    @GET("/api/ads")
+    suspend fun getAds(): List<Ad>
+
+    @GET("/api/ads/{id}")
+    suspend fun getAdById(@Path("id") id: Int): Ad
+
+    @Headers("Content-Type: application/json")
+    @POST("/api/ads")
+    suspend fun createAd(@Body ad: Ad): Ad
+
     /* LOGINS */
 
     @GET("/api/logins/{id}")

@@ -61,6 +61,19 @@
     <string name="my_messages">Mes messages</string>
     <string name="hour_example">08:24</string>
     <string name="no_message">Aucun message.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_message">Ecrire un message…</string>
+    <string name="date_example">08/12</string>
+    <string name="bio">Bio</string>
+    <string name="empty">Vide</string>
+    <string name="firstname_lastname">Prénom Nom</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="current_password">Mot de passe actuel</string>
+    <string name="new_password">Nouveau mot de passe</string>
+    <string name="ad_type">Type d\'annonce</string>
+    <string name="post_ad">Poster l\'annonce</string>
+    <string name="level">Niveau</string>
+    <string name="availabilities">Disponibilités</string>
 
     <string-array name="DaysOfWeek">
         <item>Lundi</item>
@@ -71,14 +84,19 @@
         <item>Samedi</item>
         <item>Dimanche</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_message">Ecrire un message...</string>
-    <string name="date_example">08/12</string>
-    <string name="bio">Bio</string>
-    <string name="empty">Vide</string>
-    <string name="firstname_lastname">Prénom Nom</string>
-    <string name="logout">Se déconnecter</string>
-    <string name="current_password">Mot de passe actuel</string>
-    <string name="new_password">Nouveau mot de passe</string>
+
+    <string-array name="TimeOfDay">
+        <item>Matin</item>
+        <item>Après-midi</item>
+        <item>Soir</item>
+        <item>Toute la journée</item>
+    </string-array>
+
+    <string-array name="EducationLevels">
+        <item>Primaire</item>
+        <item>Collège</item>
+        <item>Lycée</item>
+        <item>Supérieur</item>
+        <item>Autre</item>
+    </string-array>
 </resources>

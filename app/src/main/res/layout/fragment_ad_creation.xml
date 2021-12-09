@@ -1,99 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/editProfileLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".ui.fragments.AdCreationFragment"
-    tools:ignore="SpeakableTextPresentCheck">
+    tools:context=".ui.fragments.AdCreationFragment">
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_above="@id/adCreationFragment_postButton">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/createAdTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:text="@string/createAdTitle"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/adNameTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/createAdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/adNameTitle" />
+                android:text="@string/adNameTitle"
+                android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/adNameText"
+                android:id="@+id/adCreationFragment_titleInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/adNameTitle"
                 android:hint="@string/adNameText"
-                android:minHeight="48dp" />
-
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:minHeight="@dimen/min_clickable_height" />
 
             <TextView
-                android:id="@+id/descTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/adNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/description" />
+                android:layout_marginTop="25dp"
+                android:text="@string/ad_type"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editDesc"
+            <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/descTitle"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/adCreationFragment_lookingForTutoring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/lookingForTutoring" />
+
+                <RadioButton
+                    android:id="@+id/adCreationFragment_tutoring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lookingToTutor" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/description"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/adCreationFragment_descriptionInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/description"
-                android:minHeight="48dp" />
-
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:maxLength="400"
+                android:maxLines="6"
+                android:minHeight="@dimen/min_clickable_height" />
 
             <TextView
-                android:id="@+id/subjectTitle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/editDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/subjectTitle" />
+                android:layout_marginTop="25dp"
+                android:text="@string/subjectTitle"
+                android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/subjectText"
+                android:id="@+id/adCreationFragment_subjectInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/subjectTitle"
                 android:hint="@string/subjectText"
-                android:minHeight="48dp" />
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="50"
+                android:maxLines="1"
+                android:minHeight="@dimen/min_clickable_height" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/level"
+                android:textStyle="bold" />
 
-        </RelativeLayout>
+            <Spinner
+                android:id="@+id/adCreationFragment_levelSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/level"
+                android:minHeight="@dimen/min_clickable_height" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/availabilities"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/adCreationFragment_daySpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/availabilities"
+                    android:minHeight="@dimen/min_clickable_height" />
+
+                <Spinner
+                    android:id="@+id/adCreationFragment_timeSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/availableHours"
+                    android:minHeight="@dimen/min_clickable_height" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/localisation"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/adCreationFragment_locationInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/localisation"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLength="100"
+                android:maxLines="1"
+                android:minHeight="@dimen/min_clickable_height" />
+
+        </LinearLayout>
 
     </ScrollView>
 
     <Button
-        android:id="@+id/continueButton"
+        android:id="@+id/adCreationFragment_postButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="36dp"
-        android:text="@string/continueButton" />
+        android:enabled="false"
+        android:text="@string/post_ad" />
 
 </RelativeLayout>

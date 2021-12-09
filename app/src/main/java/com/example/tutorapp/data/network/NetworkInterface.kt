@@ -20,6 +20,10 @@ interface NetworkInterface {
     @POST("/api/logins")
     suspend fun createLogin(@Body login: Login): Login
 
+    @Headers("Content-Type: application/json")
+    @PUT("/api/logins/{id}")
+    suspend fun updateLogin(@Path("id") id: String, @Body login: Login): Login
+
     @DELETE("/api/logins/{id}")
     suspend fun deleteLogin(@Path("id") id: String)
 

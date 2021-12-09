@@ -63,6 +63,8 @@ class AccountFragment : Fragment() {
 
     private fun initUIWithUserData(user: User) {
         accountFragment_usernameTextView.text = user.username
+        accountFragment_bioTextView.text =
+            if (user.bio.isEmpty()) resources.getString(R.string.empty) else user.bio
         val names = "${user.firstName} ${user.lastName}"
         accountFragment_namesTextView.text = names
         accountFragment_emailTextView.text = user.email

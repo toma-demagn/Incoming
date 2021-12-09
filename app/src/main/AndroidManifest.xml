@@ -21,8 +21,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.activities.EditProfileActivity"
-            android:exported="true"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+            android:exported="true" />
         <activity
             android:name=".ui.activities.SignUpActivity"
             android:exported="true">

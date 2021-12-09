@@ -79,7 +79,7 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/enter_message"
                 android:inputType="text"
-                android:maxLength="10"
+                android:maxLength="400"
                 android:maxLines="6"
                 tools:ignore="Autofill" />
 

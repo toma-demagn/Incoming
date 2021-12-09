@@ -79,4 +79,6 @@
     <string name="empty">Vide</string>
     <string name="firstname_lastname">Prénom Nom</string>
     <string name="logout">Se déconnecter</string>
+    <string name="current_password">Mot de passe actuel</string>
+    <string name="new_password">Nouveau mot de passe</string>
 </resources>

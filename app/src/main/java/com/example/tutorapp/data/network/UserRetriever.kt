@@ -29,4 +29,8 @@ class UserRetriever {
     suspend fun createUser(user: User): User {
         return  networkInterface.createUser(user)
     }
+
+    suspend fun updateUser(id: Int, user: User): User {
+        return networkInterface.updateUser(id, user)
+    }
 }

@@ -64,4 +64,8 @@ interface NetworkInterface {
     @Headers("Content-Type: application/json")
     @POST("/api/users")
     suspend fun createUser(@Body user: User): User
+
+    @Headers("Content-Type: application/json")
+    @PUT("/api/users/{id}")
+    suspend fun updateUser(@Path("id") id: Int, @Body user: User): User
 }

@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.coroutines.*
 
 private const val USER_ID = "userId"
+private const val REQUEST_CODE_TO_EDIT = 1
 
 class AccountFragment : Fragment() {
 
@@ -72,8 +73,15 @@ class AccountFragment : Fragment() {
     }
 
     private fun goToEdit() {
-        val intent = Intent(context as Activity, EditProfileActivity::class.java)
-        startActivity(intent)
+        val intent = Intent(context, EditProfileActivity::class.java)
+        startActivityForResult(intent, REQUEST_CODE_TO_EDIT)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_TO_EDIT && resultCode == Activity.RESULT_OK) {
+            getUserData()
+        }
     }
 
     private fun logOut() {

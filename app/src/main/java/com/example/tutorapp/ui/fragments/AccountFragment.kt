@@ -22,16 +22,22 @@ import kotlinx.coroutines.*
 private const val USER_ID = "userId"
 private const val REQUEST_CODE_TO_EDIT = 1
 
+/**
+ * Account Fragment
+ */
 class AccountFragment : Fragment() {
 
+    // Saved data
     private lateinit var sp: SharedPreferences
     private var userId: Int? = null
+    // User retriever
     private val userRetriever: UserRetriever = UserRetriever()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Getting the sp values
         sp = this.requireActivity().getSharedPreferences("login", AppCompatActivity.MODE_PRIVATE)
         userId = sp.getInt(USER_ID, -1)
         // Inflate the layout for this fragment
@@ -48,6 +54,9 @@ class AccountFragment : Fragment() {
 
     }
 
+    /**
+     * Fetch the user data and init/update the UI with it
+     */
     private fun getUserData() {
         val userFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->
@@ -62,6 +71,9 @@ class AccountFragment : Fragment() {
         }
     }
 
+    /**
+     * Init the UI values according to user data
+     */
     private fun initUIWithUserData(user: User) {
         accountFragment_usernameTextView.text = user.username
         accountFragment_bioTextView.text =
@@ -72,11 +84,18 @@ class AccountFragment : Fragment() {
         accountFragment_birthdateTextView.text = TimestampUtils.timestampToDate(user.birthDate, true)
     }
 
+    /**
+     * Go to the edit profile activity
+     */
     private fun goToEdit() {
         val intent = Intent(context, EditProfileActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_TO_EDIT)
     }
 
+    /**
+     * According to the result returned by the edit profile activity,
+     * we update the user data in this fragment
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_TO_EDIT && resultCode == Activity.RESULT_OK) {
@@ -84,6 +103,10 @@ class AccountFragment : Fragment() {
         }
     }
 
+    /**
+     * Log out method
+     * Edit the sp values and go back to the signUp activity
+     */
     private fun logOut() {
         sp.edit().putBoolean("isLoggedIn", false).apply()
         sp.edit().putInt("userId", -1).apply()

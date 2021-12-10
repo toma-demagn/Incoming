@@ -4,11 +4,14 @@ import com.example.tutorapp.data.model.*
 import com.example.tutorapp.data.model.Tag
 import retrofit2.http.*
 
+/**
+ * Network Interface
+ * Uses retrofit to make the requests on the API
+ */
 interface NetworkInterface {
 
     companion object {
-        var BaseURL = "http://192.168.0.165:3000"
-        // var BaseURL = "https://apitutorapp.herokuapp.com"
+        var BaseURL = "https://apitutorapp.herokuapp.com"
     }
 
     /* ADS */

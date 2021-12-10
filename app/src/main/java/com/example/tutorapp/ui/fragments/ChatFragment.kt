@@ -23,6 +23,9 @@ import java.time.LocalDateTime
 private const val SOCKET_ID = "socketId"
 private const val USER_ID = "userId"
 
+/**
+ * Chat Fragment
+ */
 class ChatFragment : Fragment() {
 
     // Data parameters
@@ -102,6 +105,67 @@ class ChatFragment : Fragment() {
         }
     }
 
+    /**
+     * Gets the socket data
+     */
+    private fun initData() {
+        val socketFetchJob = Job()
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            Toast.makeText(context, "Impossible de récupérer les informations...", Toast.LENGTH_SHORT)
+                .show()
+        }
+        val scope = CoroutineScope(socketFetchJob + Dispatchers.Main)
+        scope.launch(errorHandler) {
+            socket = socketRetriever.getSocketById(socketId!!)
+            val contactUserId = if (socket.fromId == userId) socket.toId else socket.fromId
+            setContactUsername(contactUserId)
+        }
+    }
+
+    /**
+     * Init/Sets the contact username according the given user id
+     */
+    private fun setContactUsername(contactUserId: Int) {
+        val userFetchJob = Job()
+        val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
+        scope.launch {
+            val username = userRetriever.getUserById(contactUserId).username
+            chatFragment_contactUsername.text = username
+        }
+    }
+
+    /**
+     * Gets the messages for this socket
+     */
+    private fun getMessages() {
+        val messagesFetchJob = Job()
+        val errorHandler = CoroutineExceptionHandler { _, throwable ->
+            throwable.printStackTrace()
+            Toast.makeText(context, "Impossible de récupérer les messages...", Toast.LENGTH_SHORT)
+                .show()
+        }
+        val scope = CoroutineScope(messagesFetchJob + Dispatchers.Main)
+        scope.launch(errorHandler) {
+            val messages = messageRetriever.getMessagesBySocketId(socketId!!).sortedBy{ it.time }
+            if (messages.isNotEmpty()) {
+                val userIsSocketAuthor: Boolean = userId == socket.fromId
+                renderData(messages, userIsSocketAuthor)
+            }
+        }
+    }
+
+    /**
+     * Render the data with adapter and recycler view
+     */
+    private fun renderData(messages: List<Message>, userIsSocketAuthor: Boolean) {
+        adapter = MessagesAdapter(messages = messages, userIsSocketAuthor = userIsSocketAuthor)
+        chatFragment_messagesRecyclerView.adapter = adapter
+    }
+
+    /**
+     * Send a message
+     */
     private fun sendMessage() {
         val messageFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->
@@ -122,51 +186,5 @@ class ChatFragment : Fragment() {
             getMessages()
             chatFragment_messageEditText.text.clear()
         }
-    }
-
-    private fun initData() {
-        val socketFetchJob = Job()
-        val errorHandler = CoroutineExceptionHandler { _, throwable ->
-            throwable.printStackTrace()
-            Toast.makeText(context, "Impossible de récupérer les informations...", Toast.LENGTH_SHORT)
-                .show()
-        }
-        val scope = CoroutineScope(socketFetchJob + Dispatchers.Main)
-        scope.launch(errorHandler) {
-            socket = socketRetriever.getSocketById(socketId!!)
-            val contactUserId = if (socket.fromId == userId) socket.toId else socket.fromId
-            setContactUsername(contactUserId)
-        }
-    }
-
-    private fun setContactUsername(contactUserId: Int) {
-        val userFetchJob = Job()
-        val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
-        scope.launch {
-            val username = userRetriever.getUserById(contactUserId).username
-            chatFragment_contactUsername.text = username
-        }
-    }
-
-    private fun getMessages() {
-        val messagesFetchJob = Job()
-        val errorHandler = CoroutineExceptionHandler { _, throwable ->
-            throwable.printStackTrace()
-            Toast.makeText(context, "Impossible de récupérer les messages...", Toast.LENGTH_SHORT)
-                .show()
-        }
-        val scope = CoroutineScope(messagesFetchJob + Dispatchers.Main)
-        scope.launch(errorHandler) {
-            val messages = messageRetriever.getMessagesBySocketId(socketId!!).sortedBy{ it.time }
-            if (messages.isNotEmpty()) {
-                val userIsSocketAuthor: Boolean = userId == socket.fromId
-                renderData(messages, userIsSocketAuthor)
-            }
-        }
-    }
-
-    private fun renderData(messages: List<Message>, userIsSocketAuthor: Boolean) {
-        adapter = MessagesAdapter(messages = messages, userIsSocketAuthor = userIsSocketAuthor)
-        chatFragment_messagesRecyclerView.adapter = adapter
     }
 }

@@ -17,6 +17,9 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.coroutines.*
 
+/**
+ * EditProfile Activity
+ */
 class EditProfileActivity : AppCompatActivity() {
 
     // Saved data
@@ -25,6 +28,7 @@ class EditProfileActivity : AppCompatActivity() {
     // Retrievers
     private val userRetriever: UserRetriever = UserRetriever()
     private val loginRetriever: LoginRetriever = LoginRetriever()
+
     // Activity data
     // User object
     private lateinit var user: User
@@ -116,6 +120,9 @@ class EditProfileActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK)
             finish()
         }
+
+        // Add listener on cancel button
+        editProfile_cancelButton.setOnClickListener { finish() }
     }
 
     /* INIT METHODS */

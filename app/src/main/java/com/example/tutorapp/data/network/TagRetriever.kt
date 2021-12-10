@@ -4,6 +4,9 @@ import com.example.tutorapp.data.model.Tag
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Tag retriever
+ */
 class TagRetriever {
 
     private val networkInterface: NetworkInterface

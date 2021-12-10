@@ -9,7 +9,6 @@
     tools:context=".ui.fragments.SocketsFragment">
 
     <TextView
-        android:id="@+id/msocketsFragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"

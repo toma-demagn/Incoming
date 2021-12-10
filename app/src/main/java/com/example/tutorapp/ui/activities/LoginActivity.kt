@@ -17,6 +17,9 @@ import com.example.tutorapp.data.network.UserRetriever
 import com.example.tutorapp.databinding.ActivityLoginBinding
 import kotlinx.coroutines.*
 
+/**
+ * Login Activity
+ */
 class LoginActivity : AppCompatActivity() {
 
     // Data retrievers
@@ -35,10 +38,11 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // Binding the layout
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Getting saved values
         sp = getSharedPreferences("login", MODE_PRIVATE)
 
         // Init the edit text inputs

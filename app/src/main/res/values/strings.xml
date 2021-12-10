@@ -1,23 +1,14 @@
 <resources>
     <string name="app_name">TutorApp</string>
-    <string name="title_activity_login">LoginActivity</string>
     <string name="welcomeOnTutorApp">Bienvenue sur TutorApp</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Mot de passe</string>
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Connexion</string>
-    <string name="welcome">"Bienvenue"</string>
-    <string name="invalid_username">Nom d\'utilisateur invalide</string>
-    <string name="invalid_password">Le mot de passe doit contenir au moins 5 caractères</string>
-    <string name="login_failed">"Connexion échouée"</string>
     <string name="home">Accueil</string>
     <string name="lastName">Nom</string>
     <string name="firstName">Prénom</string>
-    <string name="bankInfo">Coordonnées bancaires</string>
     <string name="typeOfAd">Catégorie d\'annonces</string>
-    <string name="postalCode">Code postal</string>
-    <string name="city">Ville</string>
-    <string name="street">Rue</string>
     <string name="search">Rechercher</string>
     <string name="add">Ajouter</string>
     <string name="messages">Messages</string>
@@ -25,17 +16,12 @@
     <string name="search_hint">Rechercher une annonce…</string>
     <string name="no_results">Aucun résultat.</string>
     <string name="suggestion">Suggestion</string>
-    <string name="addressTitle">Adresse</string>
-    <string name="creditCardNumber">Numéro de carte bancaire</string>
-    <string name="expirationCreditCard">Expiration</string>
-    <string name="pinCreditCard">CVC</string>
     <string name="lookingForTutoring">Recherche de tutorat</string>
     <string name="lookingToTutor">Proposition de tutorat</string>
     <string name="saveChanges">Sauvegarder</string>
     <string name="signUpTitle">Inscrivez-vous dès maintenant :</string>
     <string name="createAccount">Créer mon compte</string>
     <string name="description">Description</string>
-    <string name="presentation">Presentation</string>
     <string name="availableHours">Disponibilité</string>
     <string name="localisation">Localisation</string>
     <string name="author">Auteur de l\'annonce</string>
@@ -46,22 +32,15 @@
     <string name="confirm_password">Confirmez votre mot de passe</string>
     <string name="editProfileTitle">Modifier son profil</string>
     <string name="adName">Nom de l\'annonce</string>
-    <string name="introductionTitle">Introduction</string>
-    <string name="introductionText">Texte d\'introduction de l\'utilisateur</string>
     <string name="email">E-mail</string>
-    <string name="emailTitle">E-mail</string>
     <string name="createAdTitle">Créer une annonce</string>
     <string name="adNameTitle">Nom de l\'annonce</string>
     <string name="adNameText">Nom de l\'annonce</string>
-    <string name="continueButton">Continuer</string>
-    <string name="postAdButton">Poster l\'annonce</string>
     <string name="subjectText">Matière</string>
     <string name="subjectTitle">Matière</string>
-    <string name="title_activity_ad_creation">AdCreation</string>
     <string name="my_messages">Mes messages</string>
     <string name="hour_example">08:24</string>
     <string name="no_message">Aucun message.</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_message">Ecrire un message…</string>
     <string name="date_example">08/12</string>
     <string name="bio">Bio</string>
@@ -76,6 +55,7 @@
     <string name="availabilities">Disponibilités</string>
     <string name="last_ads">Dernières annonces :</string>
     <string name="ad_creation_time">Date de création de l\'annonce</string>
+    <string name="cancel">Annuler</string>
 
     <string-array name="DaysOfWeek">
         <item>Lundi</item>

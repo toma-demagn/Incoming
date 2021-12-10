@@ -16,10 +16,16 @@ import com.example.tutorapp.data.network.AdRetriever
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.*
 
+/**
+ * Home Fragment
+ */
 class HomeFragment : Fragment() {
 
+    // Saved data
     private lateinit var sp: SharedPreferences
+    // Ad retriever
     private val adRetriever: AdRetriever = AdRetriever()
+    // Ads adapter
     private lateinit var adsAdapater: AdsAdapter
 
     override fun onCreateView(
@@ -34,10 +40,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Init the recycler view
         homeFragment_recyclerView.layoutManager = LinearLayoutManager(context)
+        // Gets the ads list
         getAds()
     }
 
+    /**
+     * Gets the ads list and then display it
+     */
     private fun getAds() {
         val adsFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->
@@ -55,7 +66,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Render and display the ads list
+     */
     private fun renderData(ads: List<Ad>) {
+        // If an ad is clicked on, we go to the ad fragment
         adsAdapater = AdsAdapter(ads = ads, context = requireContext()) {
             val userId = sp.getInt("userId", -1)
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -64,6 +79,7 @@ class HomeFragment : Fragment() {
                 AdFragment.newInstance(adId = it.id!!, userId = userId))
             transaction.commit()
         }
+        // Updates the recycler view adapter and visibility
         homeFragment_recyclerView.adapter = adsAdapater
         homeFragment_recyclerView.visibility = View.VISIBLE
     }

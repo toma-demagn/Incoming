@@ -20,7 +20,9 @@ import kotlinx.android.synthetic.main.fragment_ad_creation.*
 import kotlinx.coroutines.*
 import java.time.LocalDateTime
 
-
+/**
+ * AdCreation Fragment
+ */
 class AdCreationFragment : Fragment() {
 
     // SP
@@ -97,10 +99,16 @@ class AdCreationFragment : Fragment() {
         }
     }
 
+    /**
+     * Checks that each input is not empty
+     */
     private fun allInputsAreCompleted(): Boolean =
         titleInput.text.isNotEmpty() && descInput.text.isNotEmpty()
                 && subjectInput.text.isNotEmpty() && locationInput.text.isNotEmpty()
 
+    /**
+     * Method to post a new ad
+     */
     private fun postAd() {
         val adFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->

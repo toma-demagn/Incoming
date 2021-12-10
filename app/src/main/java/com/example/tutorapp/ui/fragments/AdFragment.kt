@@ -21,6 +21,9 @@ import java.time.LocalDateTime
 private const val AD_ID = "adId"
 private const val USER_ID = "userId"
 
+/**
+ * Ad Fragment
+ */
 class AdFragment : Fragment() {
 
     // Parameters
@@ -62,12 +65,17 @@ class AdFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Init the UI with the ad and user data
         initData()
+        // Contact the ad author when the contact button is clicked on
         adFragment_contactButton.setOnClickListener {
             contactAuthor()
         }
     }
 
+    /**
+     * Gets the ad data and then init/update the UI with it
+     */
     private fun initData() {
         val adFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->
@@ -83,6 +91,9 @@ class AdFragment : Fragment() {
         }
     }
 
+    /**
+     * Init the UI with the fetched data
+     */
     private fun initUI(ad: Ad, errorHandler: CoroutineExceptionHandler) {
         val userFetchJob = Job()
         val scope = CoroutineScope(userFetchJob + Dispatchers.Main)
@@ -102,6 +113,10 @@ class AdFragment : Fragment() {
         }
     }
 
+    /**
+     * Create a socket between the current user and the ad author to contact him
+     * Switch to the chat fragment
+     */
     private fun contactAuthor() {
         val socketFetchJob = Job()
         val errorHandler = CoroutineExceptionHandler { _, throwable ->

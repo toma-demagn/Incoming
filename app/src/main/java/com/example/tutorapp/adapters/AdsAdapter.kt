@@ -12,12 +12,19 @@ import com.example.tutorapp.data.utils.TimestampUtils
 import kotlinx.android.synthetic.main.item_ad.view.*
 import java.time.LocalDate
 
+/**
+ * Adapter class for an ads list
+ */
 class AdsAdapter(
     private val ads: List<Ad>,
     private val context: Context,
     private val listener: (Ad) -> Unit
 ): RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
 
+    /**
+     * View Holder inner class
+     * Bind method to bind the data with the UI
+     */
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(ad: Ad) {
             if (!ad.isTutoringAd) itemView.adItem_imageView.setImageDrawable(
@@ -37,16 +44,25 @@ class AdsAdapter(
         }
     }
 
+    /**
+     * Inflates the right layout
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdsAdapter.ViewHolder {
         return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.item_ad, parent, false))
     }
 
+    /**
+     * Gets an item and bind it
+     */
     override fun onBindViewHolder(holder: AdsAdapter.ViewHolder, position: Int) {
         val ad = ads[position]
         holder.bind(ad = ad)
         holder.itemView.setOnClickListener{ listener(ad) }
     }
 
+    /**
+     * Returns the items number (equals to the list size)
+     */
     override fun getItemCount(): Int = ads.size
 
 }

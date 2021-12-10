@@ -6,14 +6,19 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tutorapp.R
 import com.example.tutorapp.ui.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Main Activity
+ */
 class MainActivity : AppCompatActivity() {
 
+    // Saved data
     private lateinit var sp: SharedPreferences
     private var userId: Int = -1
 
@@ -21,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // We get the sp values
+        // Getting the sp values
         sp = getSharedPreferences("login", MODE_PRIVATE)
         userId = sp.getInt("userId", -1)
 
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(signUpActivityIntent)
         }
 
+        // Bottom navigation bar initialization
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
@@ -51,6 +57,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Allows to switch to a given fragment
+     */
     private fun switchToFragment(fragment: Fragment): Boolean {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.nav_fragment_container, fragment)

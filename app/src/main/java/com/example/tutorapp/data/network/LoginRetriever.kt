@@ -4,6 +4,9 @@ import com.example.tutorapp.data.model.Login
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Login retriever
+ */
 class LoginRetriever {
 
     private val networkInterface: NetworkInterface

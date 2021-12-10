@@ -1,5 +1,8 @@
 package com.example.tutorapp.data.model
 
+/**
+ * Data class for a Message object.
+ */
 data class Message(
     val id: Int ?= null,
     val socketId: Int,

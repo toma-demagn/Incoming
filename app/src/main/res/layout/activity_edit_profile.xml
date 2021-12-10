@@ -12,7 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/editProfile_saveButton">
+        android:layout_above="@id/editProfile_bottomLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +20,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/editProfileTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/editProfileTitle"
@@ -29,7 +28,6 @@
                 tools:text="@string/editProfileTitle" />
 
             <TextView
-                android:id="@+id/editProfile_passwordTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -40,7 +38,7 @@
             <EditText
                 android:id="@+id/editProfile_currentPasswordInput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/min_clickable_height"
                 android:autofillHints="password"
                 android:hint="@string/current_password"
                 android:inputType="textPassword"
@@ -50,7 +48,7 @@
             <EditText
                 android:id="@+id/editProfile_newPasswordInput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/min_clickable_height"
                 android:hint="@string/new_password"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
@@ -60,7 +58,7 @@
             <EditText
                 android:id="@+id/editProfile_confirmNewPasswordInput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/min_clickable_height"
                 android:hint="@string/confirm_password"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
@@ -68,7 +66,6 @@
                 android:maxLines="1" />
 
             <TextView
-                android:id="@+id/editProfile_bioTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -79,7 +76,7 @@
             <EditText
                 android:id="@+id/editProfile_bioInput"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/min_clickable_height"
                 android:hint="@string/bio"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
@@ -93,7 +90,6 @@
                 android:rowCount="2">
 
                 <TextView
-                    android:id="@+id/editProfile_firstNameTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -103,7 +99,6 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/editProfile_lastNameTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -115,7 +110,7 @@
                 <EditText
                     android:id="@+id/editProfile_firstNameInput"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/min_clickable_height"
                     android:layout_columnWeight="1"
                     android:layout_marginEnd="15dp"
                     android:autofillHints="name, firstName, firstname"
@@ -138,7 +133,6 @@
             </GridLayout>
 
             <TextView
-                android:id="@+id/editProfile_adsTypeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -170,13 +164,27 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/editProfile_saveButton"
+    <LinearLayout
+        android:id="@+id/editProfile_bottomLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/min_clickable_height"
-        android:layout_marginTop="24dp"
-        android:enabled="false"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/saveChanges" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/editProfile_saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/min_clickable_height"
+            android:enabled="false"
+            android:text="@string/saveChanges" />
+
+        <Button
+            android:id="@+id/editProfile_cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:theme="@style/Button.Outline" />
+
+    </LinearLayout>
 
 </RelativeLayout>

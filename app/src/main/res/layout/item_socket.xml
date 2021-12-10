@@ -21,7 +21,6 @@
         app:layout_constraintGuide_percent="0.85" />
 
     <ImageView
-        android:id="@+id/socketItem_imageView"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:contentDescription="@string/profile"

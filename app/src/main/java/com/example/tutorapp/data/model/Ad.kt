@@ -1,5 +1,8 @@
 package com.example.tutorapp.data.model
 
+/**
+ * Data class for an Ad object
+ */
 data class Ad(
     val id: Int?= null,
     val isTutoringAd: Boolean,

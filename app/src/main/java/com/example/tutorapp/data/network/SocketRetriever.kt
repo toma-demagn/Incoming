@@ -4,6 +4,9 @@ import com.example.tutorapp.data.model.Socket
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Socket retriever
+ */
 class SocketRetriever {
 
     private val networkInterface: NetworkInterface

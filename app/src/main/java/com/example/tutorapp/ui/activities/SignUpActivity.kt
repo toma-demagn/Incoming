@@ -18,6 +18,9 @@ import com.example.tutorapp.data.network.UserRetriever
 import kotlinx.coroutines.*
 import java.util.*
 
+/**
+ * SignUp Activity
+ */
 class SignUpActivity : AppCompatActivity() {
 
     // Data retrievers

@@ -13,37 +13,54 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 /**
- * Adapter class for the suggestions list in the search fragment
+ * Adapter class for the suggestions list (in the search fragment)
  */
 class SuggestionsAdapter(
     private val tagResponse: List<Tag>,
     private val listener: (Tag) -> Unit
 ) : RecyclerView.Adapter<SuggestionsAdapter.ViewHolder>(), Filterable {
 
+    // Filtered list of items
     private var suggestionsListFiltered = ArrayList<Tag>()
 
     init {
         suggestionsListFiltered = tagResponse as ArrayList<Tag>
     }
 
+    /**
+     * View Holder inner class
+     * Bind method to bind the data with the UI
+     */
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         fun bind(tag : Tag){
             itemView.suggestion.text = tag.tag
         }
     }
 
+    /**
+     * Inflates the right layout
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(view = LayoutInflater.from(parent.context).inflate(R.layout.item_suggestion, parent, false))
     }
 
+    /**
+     * Gets an item and bind it
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tag = suggestionsListFiltered[position]
         holder.bind(tag = tag)
         holder.itemView.setOnClickListener { listener(tag) }
     }
 
+    /**
+     * Returns the items number (equals to the list size)
+     */
     override fun getItemCount(): Int = suggestionsListFiltered.size
 
+    /**
+     * Allows to filter the list and display items corresponding to the user search
+     */
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {

@@ -59,64 +59,64 @@
                 android:paddingHorizontal="15dp">
 
                 <TextView
-                    android:id="@+id/accountFragment_bioTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="@string/bio"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/accountFragment_bioTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/empty" />
+                    android:text="@string/empty"
+                    android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/accountFragment_namesTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="@string/firstname_lastname"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/accountFragment_namesTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/firstname_lastname" />
+                    android:text="@string/firstname_lastname"
+                    android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/accountFragment_emailTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="@string/email"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/accountFragment_emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/email" />
+                    android:text="@string/email"
+                    android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/accountFragment_birthdateTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:text="@string/dateOfBirth"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/accountFragment_birthdateTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/dateOfBirth" />
+                    android:text="@string/dateOfBirth"
+                    android:textSize="24sp" />
 
             </LinearLayout>
 
@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:paddingHorizontal="30dp">
+            android:paddingHorizontal="10dp">
 
             <Button
                 android:id="@+id/accountFragment_editButton"

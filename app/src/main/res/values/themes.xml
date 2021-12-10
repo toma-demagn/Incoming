@@ -11,9 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
-        <!-- Customize your theme here. -->
+        <!-- Text Color -->
+        <item name="android:textColor">@color/black</item>
     </style>
 
+    <!-- Alternative theme for buttons -->
     <style name="Button.Outline" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/white</item>
         <item name="colorOnPrimary">@color/main_blue</item>

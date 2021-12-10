@@ -4,6 +4,9 @@ import com.example.tutorapp.data.model.Ad
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Ad retriever
+ */
 class AdRetriever {
 
     private val networkInterface: NetworkInterface

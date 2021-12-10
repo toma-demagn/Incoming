@@ -13,14 +13,6 @@
         android:theme="@style/Theme.TutorApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activities.AdCreationActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"
-            android:label="@string/title_activity_ad_creation" />
-        <activity
-            android:name=".ui.activities.ShowAdActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.activities.EditProfileActivity"
             android:screenOrientation="portrait"
             android:exported="true" />

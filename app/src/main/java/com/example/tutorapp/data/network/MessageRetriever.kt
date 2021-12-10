@@ -4,6 +4,9 @@ import com.example.tutorapp.data.model.Message
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Message retriever
+ */
 class MessageRetriever {
 
     private val networkInterface: NetworkInterface

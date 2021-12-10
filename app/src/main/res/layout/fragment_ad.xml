@@ -60,112 +60,120 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/description"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/description" />
+                    android:text="@string/description"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/ad_type"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ad_type" />
+                    android:text="@string/ad_type"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/subjectTitle"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_subject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/subjectText" />
+                    android:text="@string/subjectText"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/level"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/level" />
+                    android:text="@string/level"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/availabilities"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_availabilities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/availableHours" />
+                    android:text="@string/availableHours"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/localisation"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/localisation" />
+                    android:text="@string/localisation"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/author"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/username" />
+                    android:text="@string/username"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/ad_creation_time"
-                    android:textSize="24sp"
+                    android:textColor="@color/main_blue"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/adFragment_creationTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hour_example" />
+                    android:text="@string/hour_example"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
